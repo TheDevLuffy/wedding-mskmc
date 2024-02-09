@@ -4,7 +4,7 @@
 
 ## 디자인
 
-네이버 디자이너 윤주환 선생님 협찬 - [Figma](https://www.figma.com/file/1a8REVPiRu2OIeRdJqL6JS/Untitled?type=design&node-id=12%3A1864&mode=design&t=YPSPDylBpkXW2ZT0-1)
+[네이버 Product Designer 윤주환](https://www.linkedin.com/in/juhwan-yoon-746a08197?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) 선생님 협찬 - [Figma](https://www.figma.com/file/1a8REVPiRu2OIeRdJqL6JS/Untitled?type=design&node-id=12%3A1864&mode=design&t=YPSPDylBpkXW2ZT0-1)
 
 ## 스택
 
