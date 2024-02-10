@@ -1,15 +1,46 @@
 body {
-  background-color: black;
+  background-color: #213856;
 }
 
-div.wrapper {
+.container {
+  /* iPhone 가로 스크롤 방지 */
+  overflow-x: hidden;
+  width: 1290px;
+}
+
+.global-nav {
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
   width: 100%;
-  height: 100%;
+  height: 44px;
+  padding: 0 1rem;
 }
 
-div.constructuring {
-  color: white;
+.global-nav-links {
+  display: flex;
+  align-items: center;
+  max-width: 1000px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.global-nav-links {
+  justify-content: space-between;
+}
+
+.nav-item {
+  font-family: NanumSquare Neo;
+  color: #213856;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
   text-align: center;
-  top: 50%;
-  left: 50%;
+}
+
+a.nav-item {
+  text-decoration-line: none;
 }
