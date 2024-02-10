@@ -33,12 +33,12 @@
     }
   }
 
-
   window.addEventListener('load', () => {
     window.addEventListener('scroll', () => {
       checkMenu()
     })
   })
 
+  activateLoading()
   activateTimerUI()
 })()
