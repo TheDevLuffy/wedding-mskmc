@@ -15,12 +15,12 @@ body {
 }
 
 .header {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 10;
-	width: 100%;
-	height: 48px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 48px;
   background-color: #FFFFFF;
 }
 
@@ -32,25 +32,24 @@ body {
 }
 
 .global-nav {
-	position: absolute;
-	top: 48px;
-	left: 0;
-	z-index: 11;
-	width: 100%;
-	height: 45px;
-	padding: 0 1rem;
-	border-bottom: 1px solid #ddd;
-	background: #FFFFFF;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  z-index: 11;
+  width: 100%;
+  height: 45px;
+  border-bottom: 1px solid #ddd;
+  background: #FFFFFF;
 }
 
 .global-nav-sticky .global-nav {
-	position: fixed;
-	top: 0;
-	/* for iPhone */
-	-webkit-backdrop-filter: saturate(180%) blur(15px);
-	-moz-backdrop-filter: saturate(180%) blur(15px);
-	-o-backdrop-filter: saturate(180%) blur(15px);
-	backdrop-filter: saturate(180%) blur(15px);
+  position: fixed;
+  top: 0;
+  /* for iPhone */
+  -webkit-backdrop-filter: saturate(180%) blur(15px);
+  -moz-backdrop-filter: saturate(180%) blur(15px);
+  -o-backdrop-filter: saturate(180%) blur(15px);
+  backdrop-filter: saturate(180%) blur(15px);
 }
 
 .global-nav-links {
@@ -61,16 +60,27 @@ body {
   margin: 0 auto;
 }
 
+.global-nav-item-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .nav-item {
   font-family: NanumSquare Neo;
-  flex: 1;
+  text-align: center;
   color: #213856;
   font-size: 15px;
   font-weight: 700;
   line-height: 17px;
   letter-spacing: 0em;
-  text-align: center;
   opacity: 50%;
+}
+
+.selected-item {
+  border-bottom: 3px solid #213856;
 }
 
 a.nav-item {

@@ -78,6 +78,68 @@
       })
   }
 
+  function selectedMenu() {
+    document.querySelectorAll('a[href^="#"]')
+      .forEach(element => {
+        const targetId = element.getAttribute('href')
+        const targetName = targetId.replace('#', '')
+        const wrapper = element.parentElement
+
+
+        switch (targetName) {
+          case screenInfo.introduce.name:
+            if (scrollY < screenInfo.gallary.offsetTop - screenInfo.nav.height) {
+              wrapper.classList.add('selected-item')
+              element.style.opacity = 1
+            } else {
+              wrapper.classList.remove('selected-item')
+              element.style.opacity = '50%'
+            }
+            break
+
+          case screenInfo.gallary.name:
+            if (scrollY < screenInfo.location.offsetTop - screenInfo.nav.height && scrollY >= screenInfo.gallary.offsetTop - screenInfo.nav.height) {
+              wrapper.classList.add('selected-item')
+              element.style.opacity = 1
+            } else {
+              wrapper.classList.remove('selected-item')
+              element.style.opacity = '50%'
+            }
+            break
+
+          case screenInfo.location.name:
+            if (scrollY < screenInfo.contact.offsetTop - screenInfo.nav.height && scrollY >= screenInfo.location.offsetTop - screenInfo.nav.height) {
+              wrapper.classList.add('selected-item')
+              element.style.opacity = 1
+            } else {
+              wrapper.classList.remove('selected-item')
+              element.style.opacity = '50%'
+            }
+            break
+
+          case screenInfo.contact.name:
+            if (scrollY < screenInfo.guestbook.offsetTop - screenInfo.nav.height && scrollY >= screenInfo.contact.offsetTop - screenInfo.nav.height) {
+              wrapper.classList.add('selected-item')
+              element.style.opacity = 1
+            } else {
+              wrapper.classList.remove('selected-item')
+              element.style.opacity = '50%'
+            }
+            break
+
+          case screenInfo.guestbook.name:
+            if (scrollY >= screenInfo.guestbook.offsetTop - screenInfo.nav.height) {
+              wrapper.classList.add('selected-item')
+              element.style.opacity = 1
+            } else {
+              wrapper.classList.remove('selected-item')
+              element.style.opacity = '50%'
+            }
+            break
+        }
+      })
+  }
+
   function changeMenuVisibility() {
     if (scrollY > 44) {
       document.body.classList.add('global-nav-sticky')
@@ -90,6 +152,7 @@
     window.addEventListener('scroll', () => {
       scrollY = window.scrollY
       changeMenuVisibility()
+      selectedMenu()
     })
   })
 
