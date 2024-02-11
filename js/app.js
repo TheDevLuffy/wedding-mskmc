@@ -1,4 +1,6 @@
-(function () {
+(() => {
+  let scrollY = 0;
+
   function calculateDay(targetDate) {
     const targetTime = new Date(targetDate)
     const todayTime = new Date()
@@ -25,8 +27,8 @@
     }, 1000)
   }
 
-  function checkMenu() {
-    if (window.scrollY > 44) {
+  function changeMenuVisibility() {
+    if (scrollY > 44) {
       document.body.classList.add('global-nav-sticky')
     } else {
       document.body.classList.remove('global-nav-sticky')
@@ -35,7 +37,8 @@
 
   window.addEventListener('load', () => {
     window.addEventListener('scroll', () => {
-      checkMenu()
+      scrollY = window.scrollY
+      changeMenuVisibility()
     })
   })
 
