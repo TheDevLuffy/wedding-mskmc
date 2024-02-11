@@ -1,6 +1,47 @@
 (() => {
   let scrollY = 0;
 
+  const screenInfo = {
+    header: {
+      height: 48
+    },
+    nav: {
+      height: 45
+    },
+    introduce: {
+      name: 'introduce',
+      offsetTop: 0,
+    },
+    gallary: {
+      name: 'gallary',
+      offsetTop: 0,
+    },
+    location: {
+      name: 'location',
+      offsetTop: 0,
+    },
+    contact: {
+      name: 'contact',
+      offsetTop: 0,
+    },
+    guestbook: {
+      name: 'guestbook',
+      offsetTop: 0,
+    },
+  }
+
+  function initScreenLayout() {
+    document.querySelector('#introduce').style.marginTop = `${screenInfo.header.height + screenInfo.nav.height}px`
+  }
+
+  function initScreenInfo() {
+    screenInfo.introduce.offsetTop = document.querySelector(`#${screenInfo.introduce.name}`).offsetTop
+    screenInfo.gallary.offsetTop = document.querySelector(`#${screenInfo.gallary.name}`).offsetTop
+    screenInfo.location.offsetTop = document.querySelector(`#${screenInfo.location.name}`).offsetTop
+    screenInfo.contact.offsetTop = document.querySelector(`#${screenInfo.contact.name}`).offsetTop
+    screenInfo.guestbook.offsetTop = document.querySelector(`#${screenInfo.guestbook.name}`).offsetTop
+  }
+
   function calculateDay(targetDate) {
     const targetTime = new Date(targetDate)
     const todayTime = new Date()
@@ -20,11 +61,21 @@
     }
   }
 
-  function activateTimerUI() {
-    setInterval(() => {
-      const dDay = calculateDay("2024-06-08 11:30:00")
-      document.querySelector('#timer').innerText = `D-${dDay.day} ${dDay.hour}:${dDay.min}:${dDay.second}`
-    }, 1000)
+  function activateMenuAnimation() {
+    document.querySelectorAll('a[href^="#"]')
+      .forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+          e.preventDefault()
+
+          const targetId = anchor.getAttribute('href')
+          const targetElement = document.querySelector(targetId)
+
+          window.scrollTo({
+            'behavior': 'smooth',
+            'top': targetElement.offsetTop - screenInfo.nav.height
+          })
+        })
+      })
   }
 
   function changeMenuVisibility() {
@@ -42,6 +93,7 @@
     })
   })
 
-  activateLoading()
-  activateTimerUI()
+  initScreenLayout()
+  initScreenInfo()
+  activateMenuAnimation()
 })()

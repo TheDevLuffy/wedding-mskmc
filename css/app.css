@@ -70,6 +70,7 @@ body {
   line-height: 17px;
   letter-spacing: 0em;
   text-align: center;
+  opacity: 50%;
 }
 
 a.nav-item {
@@ -78,4 +79,37 @@ a.nav-item {
 
 .dummy {
   height: 1000px;
+}
+
+.section-introduce {
+  width: 100%;
+  height: 1236px;
+}
+
+.section-gallary {
+  background-color: #FFFFFF;
+  width: 100%;
+  height: 915px;
+  border: 1px solid black;
+}
+
+.section-location {
+  background-color: #FFFFFF;
+  width: 100%;
+  height: 1327px;
+  border: 1px solid black;
+}
+
+.section-contact {
+  background-color: #FFFFFF;
+  width: 100%;
+  height: 841px;
+  border: 1px solid black;
+}
+
+.section-guestbook {
+  background-color: #213856;
+  width: 100%;
+  height: 724px;
+  border: 1px solid black;
 }
