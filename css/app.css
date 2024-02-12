@@ -68,7 +68,7 @@ body {
 }
 
 .nav-item {
-  font-family: NanumSquare Neo;
+  font-family: 'NanumSquare Neo';
   text-align: center;
   color: #213856;
   font-size: 15px;
@@ -86,9 +86,34 @@ a.nav-item {
   text-decoration-line: none;
 }
 
+.section {
+  padding: 3rem 0;
+}
+
+.section-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-title .section-title-text {
+  font-family: 'NanumSquare Neo';
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin: 0 0.5rem ;
+}
+
+.section-title .white-title {
+  color: #FFFFFF;
+}
+
 .section-introduce {
   width: 100%;
-  padding: 0 0 2rem 0 ;
+  padding: 0 0 2rem 0;
 }
 
 .introduce-title {
@@ -101,7 +126,7 @@ a.nav-item {
 }
 
 .introduce-title-content {
-  font-family: NanumSquare Neo;
+  font-family: 'NanumSquare Neo';
   font-size: 20px;
   font-weight: 700;
   line-height: 22px;
@@ -116,7 +141,7 @@ a.nav-item {
 }
 
 div.introduce-content {
-  font-family: NanumSquare Neo;
+  font-family: 'NanumSquare Neo';
   font-size: 15px;
   font-weight: 400;
   line-height: 22px;
@@ -173,7 +198,7 @@ div.divider {
 
 .inner-content .inner-content-header {
   margin: 1rem 0;
-  font-family: NanumSquare Neo;
+  font-family: 'NanumSquare Neo';
   font-size: 20px;
   font-weight: 700;
   line-height: 22px;
@@ -183,7 +208,7 @@ div.divider {
 }
 
 .inner-content .inner-content-body {
-  font-family: NanumSquare Neo;
+  font-family: 'NanumSquare Neo';
   font-size: 15px;
   font-weight: 400;
   line-height: 22px;
