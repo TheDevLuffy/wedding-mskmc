@@ -149,6 +149,8 @@
   }
 
   window.addEventListener('load', () => {
+    initScreenLayout()
+    
     window.addEventListener('scroll', () => {
       scrollY = window.scrollY
       changeMenuVisibility()

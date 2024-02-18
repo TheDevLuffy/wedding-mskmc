@@ -1,7 +1,3 @@
-body {
-  background-color: #213856;
-}
-
 .container {
   /* iPhone 가로 스크롤 방지 */
   overflow-x: hidden;
@@ -100,12 +96,13 @@ a.nav-item {
 
 .section-title .section-title-text {
   font-family: 'NanumSquare Neo';
+  color: #213856;
   font-size: 20px;
   font-weight: 800;
   line-height: 22px;
   letter-spacing: 0em;
   text-align: center;
-  margin: 0 0.5rem ;
+  margin: 0 0.5rem;
 }
 
 .section-title .white-title {
@@ -115,6 +112,7 @@ a.nav-item {
 .section-introduce {
   width: 100%;
   padding: 0 0 2rem 0;
+  background-color: #213856;
 }
 
 .introduce-title {
@@ -247,11 +245,13 @@ div.divider {
 .square {
   position: relative;
 }
+
 .square::after {
   content: "";
   display: block;
   padding-bottom: 100%;
 }
+
 .square img {
   width: 100%;
   height: 100%;
@@ -259,10 +259,90 @@ div.divider {
 }
 
 .section-location {
-  background-color: #FFFFFF;
+  background-color: #0000000F;
   width: 100%;
   height: 1327px;
-  border: 1px solid black;
+}
+
+.location-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-content .location-content-title {
+  font-family: NanumSquare Neo;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.location-content .location-content-description {
+  font-family: NanumSquare Neo;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.location-map {
+  padding: 0 0 3rem 0;
+}
+
+.location-map-view {
+  padding: 1rem 1.5rem;
+}
+
+.location-map-buttons {
+  display: grid;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+}
+
+.location-map-buttons .map-buttons-row {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.location-map-buttons .map-buttons-row .map-icon-button {
+  width: 163px;
+  height: 48px;
+  border-radius: 4px;
+  border: 1px solid #EFEFF0;
+  background: linear-gradient(0deg, #FFFFFF, #FFFFFF),
+    linear-gradient(0deg, #EFEFF0, #EFEFF0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-map-buttons .button-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  border: 1px solid #0000000F;
+}
+
+.location-map-buttons .button-text {
+  margin-left: 0.5rem;
+  font-family: NanumSquare Neo;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #303038;
 }
 
 .section-contact {
