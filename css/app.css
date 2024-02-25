@@ -311,6 +311,7 @@ div.divider {
   align-items: center;
   justify-content: center;
   padding: 0 1.5rem;
+  gap: 4px
 }
 
 .location-map-buttons .map-buttons-row {
@@ -319,6 +320,7 @@ div.divider {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+  gap: 4px
 }
 
 .location-map-buttons .map-buttons-row .map-icon-button {
@@ -332,6 +334,7 @@ div.divider {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .location-map-buttons .button-icon {
@@ -498,6 +501,7 @@ div.divider {
   border: 1px solid #EFEFF0;
   padding: 0.8rem 1rem;
   background-color: white;
+  cursor: pointer;
 }
 
 .contact-list .contact-avatar {
@@ -563,6 +567,7 @@ div.divider {
   border: 1px solid #EFEFF0;
   background: #FFFFFF;
   height: 48px;
+  cursor: pointer;
 }
 
 .section-account .drop-down .button-text {
@@ -610,6 +615,7 @@ div.divider {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .share-buttons .button-icon {
@@ -645,6 +651,7 @@ div.divider {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
 .guestbook-button-icon {
