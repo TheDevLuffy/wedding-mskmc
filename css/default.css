@@ -25,6 +25,11 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
+
+	/* disable select */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
