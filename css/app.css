@@ -442,8 +442,97 @@ div.divider {
 .section-contact {
   background-color: #FFFFFF;
   width: 100%;
-  height: 841px;
-  border: 1px solid black;
+  padding: 3rem 1.5rem;
+}
+
+.section-contact .card-contact {
+  border: 1px solid #31496A0F;
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.section-contact .card-blue {
+  background: #F8F9FF;
+  border: 1px solid #31496A0F
+}
+
+.card-contact .title {
+  font-family: NanumSquare Neo;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.card-blue .blue {
+  color: #213856;
+}
+
+.section-contact .card-red {
+  background: #FFF8F8;
+  border: 1px solid #C987870F;
+}
+
+.card-red .red {
+  color: #DD6C6C;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-list .contact-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #EFEFF0;
+  padding: 0.8rem 1rem;
+  background-color: white;
+}
+
+.contact-list .contact-avatar {
+  background: gray;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.contact-list .contact-title {
+  flex: 3;
+  font-family: NanumSquare Neo;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #929294;
+}
+
+.contact-list .contact-name {
+  flex: 5;
+  font-family: NanumSquare Neo;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #303038;
+}
+
+.contact-list .contact-button {
+  flex: 12;
+  text-align: right;
+}
+
+.contact-list .contact-button .icon {
+  font-weight: 700;
+  color: #303038;
 }
 
 .section-guestbook {
