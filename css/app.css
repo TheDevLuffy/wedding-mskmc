@@ -300,7 +300,8 @@ div.divider {
 }
 
 .location-map-buttons {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -309,13 +310,14 @@ div.divider {
 
 .location-map-buttons .map-buttons-row {
   flex: 1;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
 }
 
 .location-map-buttons .map-buttons-row .map-icon-button {
-  width: 163px;
+  flex: 1;
   height: 48px;
   border-radius: 4px;
   border: 1px solid #EFEFF0;
@@ -343,6 +345,98 @@ div.divider {
   letter-spacing: 0em;
   text-align: center;
   color: #303038;
+}
+
+.card-layout {
+  padding: 0 1.5rem;
+}
+
+.card-icon-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: #DFE5FB;
+  border: 1px solid #EFEFF0;
+  border-radius: 50%;
+  transform: translateY(50%);
+}
+
+.card-inner-box {
+  padding-top: 44px;
+  padding-bottom: 22px;
+  top: 22px;
+  background: #FFFFFF;
+  border: 1px solid #EFEFF0;
+  border-radius: 4px;
+}
+
+.card-title {
+  font-family: NanumSquare Neo;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #213856;
+  margin-bottom: 1rem;
+}
+
+.card-content {
+  font-family: NanumSquare Neo;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #303038;
+}
+
+.bus-chip-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 1rem 0;
+}
+
+.bus-chip-text {
+  font-family: NanumSquare Neo;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: center;
+  gap: 10px;
+}
+
+.bus-chip {
+  width: fit-content;
+  padding: 2px 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+.bus-chip-blue {
+  background: #0050BD1A;
+  color: #0050BD;
+}
+
+.bus-chip-green {
+  background: #00A4411A;
+  color: #00A441;
+}
+
+.bus-chip-red {
+  background: #F33B221A;
+  color: #F33B22;
 }
 
 .section-contact {
