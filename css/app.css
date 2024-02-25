@@ -504,7 +504,7 @@ div.divider {
 }
 
 .contact-list .contact-title {
-  flex: 3;
+  flex: 4;
   font-family: NanumSquare Neo;
   font-size: 14px;
   font-weight: 700;
@@ -532,6 +532,96 @@ div.divider {
 
 .contact-list .contact-button .icon {
   font-weight: 700;
+  color: #303038;
+}
+
+.section-title-margin {
+  margin-top: 2rem;
+}
+
+.section-account {
+  background: #F9F9F9;
+  padding: 3rem 1.5rem;
+}
+
+.section-account .drop-downs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section-account .drop-down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid #EFEFF0;
+  background: #FFFFFF;
+  height: 48px;
+}
+
+.section-account .drop-down .button-text {
+  font-family: NanumSquare Neo;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.section-account .drop-down .blue-text {
+  color: #213856;
+}
+
+.section-account .drop-down .red-text {
+  color: #DD6C6C;
+}
+
+.share-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-buttons .share-buttons-row {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.share-buttons .share-buttons-row .share-icon-button {
+  flex: 1;
+  height: 48px;
+  border-radius: 4px;
+  border: 1px solid #EFEFF0;
+  background: linear-gradient(0deg, #FFFFFF, #FFFFFF),
+    linear-gradient(0deg, #EFEFF0, #EFEFF0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-buttons .button-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  border: 1px solid #0000000F;
+}
+
+.share-buttons .button-text {
+  margin-left: 0.5rem;
+  font-family: NanumSquare Neo;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: center;
   color: #303038;
 }
 
