@@ -163,10 +163,13 @@ div.divider {
   justify-self: center;
 }
 
+.introduce-body {
+  padding: 0 1.5rem;
+}
+
 .introduce-body-wrapper {
   height: fit-content;
   background-color: #FFFFFF;
-  margin: 0 1rem;
   padding: 0.4rem;
   border-radius: 4px;
 }
@@ -174,7 +177,7 @@ div.divider {
 .introduce-body-wrapper .inner-border {
   border-radius: 4px;
   border: 1px solid #213856;
-  padding: 2rem 4rem;
+  padding: 1rem;
 }
 
 .inner-content {
@@ -193,6 +196,7 @@ div.divider {
   height: 56px;
   border: 1px solid #0000000F;
   border-radius: 50%;
+  margin-top: 1rem;
 }
 
 .inner-content .inner-content-header {
@@ -214,6 +218,7 @@ div.divider {
   letter-spacing: 0em;
   text-align: center;
   color: #303038;
+  margin-bottom: 1rem;
 }
 
 .section-gallary {
@@ -628,6 +633,35 @@ div.divider {
 .section-guestbook {
   background-color: #213856;
   width: 100%;
-  height: 724px;
-  border: 1px solid black;
+}
+
+.guestbook-button {
+  display: flex;
+  height: 48px;
+  border-radius: 4px;
+  margin: 0 1.5rem;
+  margin-bottom: 1rem;
+  background: #FFFFFF1A;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.guestbook-button-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.guestbook-button-text {
+  font-family: NanumSquare Neo;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.footer {
+  background-color: #213856;
 }
