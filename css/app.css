@@ -20,6 +20,33 @@
   background-color: #FFFFFF;
 }
 
+.snackbar-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: none;
+}
+
+.snackbar-container .snackbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  margin: 1rem;
+  background-color: #000000EE;
+  border-radius: 4px;
+}
+
+.snackbar-container .snackbar-text {
+  font-family: NanumSquare Neo;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.5px;
+  text-align: center;
+  color: white;
+}
+
 .center-div {
   display: flex;
   justify-content: center;

@@ -30,6 +30,12 @@
     },
   }
 
+  const shareData = {
+    title: "민슬기 ❤️ 권민철",
+    text: "2024년 6월 8일 오전 11시 30분 결혼식에 초대합니다.",
+    url: "https://wedding.mskmc.world",
+  }
+
   function initScreenLayout() {
     document.querySelector('#introduce').style.marginTop = `${screenInfo.header.height + screenInfo.nav.height}px`
   }
@@ -42,23 +48,46 @@
     screenInfo.guestbook.offsetTop = document.querySelector(`#${screenInfo.guestbook.name}`).offsetTop
   }
 
-  function calculateDay(targetDate) {
-    const targetTime = new Date(targetDate)
-    const todayTime = new Date()
+  function initButtons() {
+    initShareButton()
+    initShareButtonKakao()
+  }
 
-    const diff = targetTime - todayTime
+  function initShareButton() {
+    const shareButton = document.querySelector("#share-button");
 
-    const diffDay = Math.floor(diff / (1000 * 60 * 60 * 24))
-    const diffHour = Math.floor((diff / (1000 * 60 * 60)) % 24)
-    const diffMin = Math.floor((diff / (1000 * 60)) % 60)
-    const diffSec = Math.floor(diff / 1000 % 60)
+    shareButton.addEventListener("click", async () => {
+      try {
+        await navigator.share(shareData)
+      } catch (err) {
+        console.error(err)
+        showSnackbar('복사에 실패함', 1000)
+      }
+    })
+  }
 
-    return {
-      day: diffDay,
-      hour: diffHour,
-      min: diffMin,
-      second: diffSec
-    }
+  function initShareButtonKakao() {
+    const shareButton = document.querySelector("#share-button-kakao");
+
+    shareButton.addEventListener("click", async () => {
+      try {
+        await navigator.share(shareData)
+      } catch (err) {
+        console.error(err)
+      }
+    })
+  }
+
+  function showSnackbar(text, duration) {
+    const snackbar = document.querySelector("#snackbar")
+    const snackbarText = document.querySelector("#snackbar-text")
+
+    snackbar.style.display = 'block'
+    snackbarText.innerText = text
+
+    setTimeout(() => {
+      snackbar.style.display = 'none'
+    }, duration)
   }
 
   function activateMenuAnimation() {
@@ -160,5 +189,6 @@
 
   initScreenLayout()
   initScreenInfo()
+  initButtons()
   activateMenuAnimation()
 })()
