@@ -29,6 +29,12 @@
       offsetTop: 0,
     },
   }
+  const location = {
+    lat: 37.5059683,
+    lng: 127.0667385,
+    name: '그랜드힐컨벤션',
+    placeId: 1948333104,
+  }
 
   const metadata = {
     shareData: {
@@ -45,6 +51,31 @@
     }
   }
 
+  const linkData = {
+    naver: {
+      buttonId: '#location-button-naver',
+      enableWeb: true,
+      web: "https://naver.me/5HSEqXDy",
+      mobile: `nmap://place?lat=${location.lat}&lng=${location.lng}&name=${location.name}`,
+    },
+    kakao: {
+      buttonId: '#location-button-kakao',
+      enableWeb: true,
+      web: "https://kko.to/MmEHZ53yy-",
+      mobile: `kakaomap://place?id=${location.placeId}`,
+    },
+    kakaonavi: {
+      buttonId: '#location-button-kakaonavi',
+      enableWeb: false,
+      mobile: `kakaonavi://route?y=${location.lat}&x=${location.lng}`,
+    },
+    tmap: {
+      buttonId: '#location-button-tmap',
+      enableWeb: false,
+      mobile: `tmap://route?rGoY=${location.lat}&rGoX=${location.lng}&rGoName=${location.name}`,
+    }
+  }
+
   function initScreenLayout() {
     document.querySelector('#introduce').style.marginTop = `${screenInfo.header.height + screenInfo.nav.height}px`
   }
@@ -57,7 +88,7 @@
     screenInfo.guestbook.offsetTop = document.querySelector(`#${screenInfo.guestbook.name}`).offsetTop
   }
 
-  function initButtons() {
+  function initShareButtons() {
     initShareButton()
     initShareButtonKakao()
   }
@@ -90,6 +121,84 @@
     shareButton.addEventListener("click", async () => {
       showSnackbar('카카오톡 공유하기', 3000)
     })
+  }
+
+  function initLocationButtons() {
+    initLocationButtonNaver()
+    initLocationButtonKakaomap()
+    initLocationButtonKakaoNavi()
+    initLocationButtonTmap()
+  }
+
+  function initLocationButtonNaver() {
+    const naviButton = document.querySelector(linkData.naver.buttonId)
+
+    naviButton.addEventListener("click", async () => {
+      if (isMobile()) {
+        window.open(linkData.naver.mobile)
+      } else {
+        window.open(linkData.naver.web)
+      }
+    })
+  }
+
+  function initLocationButtonKakaomap() {
+    const naviButton = document.querySelector(linkData.kakao.buttonId)
+    
+    naviButton.addEventListener("click", async () => {
+      if (isMobile()) {
+        window.open(linkData.kakao.mobile)
+      } else {
+        window.open(linkData.kakao.web)
+      }
+    })
+  }
+  
+  function initLocationButtonKakaoNavi() {
+    const naviButton = document.querySelector(linkData.kakaonavi.buttonId)
+
+    if (isMobile) {
+      naviButton.style.display = 'none'
+      return
+    }
+
+    function startNavigation() {
+      Kakao.Navi.start({
+        name: location.name,
+        x: location.lng,
+        y: location.lat,
+        coordType: 'wgs84',
+      });
+    }
+
+    naviButton.addEventListener("click", async () => {
+      if (isMobile()) {
+        startNavigation()
+      } else {
+        showSnackbar('모바일에서 지원하는 버튼입니다.', 3000)
+      }
+    })
+  }
+
+  function initLocationButtonTmap() {
+    const naviButton = document.querySelector(linkData.tmap.buttonId)
+
+    if (isMobile) {
+      naviButton.style.display = 'none'
+      return
+    }
+
+    naviButton.addEventListener("click", async () => {
+      if (isMobile()) {
+        window.open(linkData.tmap.mobile)
+      } else {
+        showSnackbar('모바일에서 지원하는 버튼입니다.', 3000)
+      }
+    })
+  }
+
+  function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }
 
   function showSnackbar(text, duration) {
@@ -207,6 +316,7 @@
 
   initScreenLayout()
   initScreenInfo()
-  initButtons()
+  initShareButtons()
+  initLocationButtons()
   activateMenuAnimation()
 })()
