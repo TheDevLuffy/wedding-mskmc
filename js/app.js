@@ -157,7 +157,7 @@
   function initLocationButtonKakaoNavi() {
     const naviButton = document.querySelector(linkData.kakaonavi.buttonId)
 
-    if (isMobile) {
+    if (!isMobile()) {
       naviButton.style.display = 'none'
       return
     }
@@ -183,7 +183,7 @@
   function initLocationButtonTmap() {
     const naviButton = document.querySelector(linkData.tmap.buttonId)
 
-    if (isMobile) {
+    if (!isMobile()) {
       naviButton.style.display = 'none'
       return
     }
@@ -198,7 +198,8 @@
   }
 
   function isMobile() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
+    return regex.test(navigator.userAgent)
   }
 
   function showSnackbar(text, duration) {
