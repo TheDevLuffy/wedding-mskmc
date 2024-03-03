@@ -3,6 +3,19 @@
   overflow-x: hidden;
 }
 
+.section {
+  padding: 3rem 0;
+}
+
+.footer {
+  background-color: #213856;
+}
+
+.width-restriction {
+  max-width: 1000px;
+  min-width: 375px;
+}
+
 .loading {
   position: absolute;
   top: 50%;
@@ -107,10 +120,6 @@
 
 a.nav-item {
   text-decoration-line: none;
-}
-
-.section {
-  padding: 3rem 0;
 }
 
 .section-title {
@@ -540,7 +549,7 @@ div.divider {
 }
 
 .contact-list .contact-title {
-  flex: 4;
+  width: 64px;
   font-family: NanumSquare Neo;
   font-size: 14px;
   font-weight: 700;
@@ -551,7 +560,7 @@ div.divider {
 }
 
 .contact-list .contact-name {
-  flex: 5;
+  flex: 4;
   font-family: NanumSquare Neo;
   font-size: 14px;
   font-weight: 700;
@@ -562,7 +571,7 @@ div.divider {
 }
 
 .contact-list .contact-button {
-  flex: 12;
+  flex: 8;
   text-align: right;
 }
 
@@ -694,8 +703,4 @@ div.divider {
   letter-spacing: 0em;
   text-align: center;
   color: #FFFFFF;
-}
-
-.footer {
-  background-color: #213856;
 }

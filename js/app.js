@@ -30,10 +30,19 @@
     },
   }
 
-  const shareData = {
-    title: "민슬기 ❤️ 권민철",
-    text: "2024년 6월 8일 오전 11시 30분 결혼식에 초대합니다.",
-    url: "https://wedding.mskmc.world",
+  const metadata = {
+    shareData: {
+      title: "민슬기 ❤️ 권민철",
+      text: "2024년 6월 8일 오전 11시 30분 결혼식에 초대합니다.",
+      url: "https://wedding.mskmc.world",
+    },
+    clipboardData: {
+      content: `
+      2024년 6월 8일 토요일 오전 11시 30분
+      민철과 슬기의 결혼에 초대합니다.
+      https://wedding.mskmc.world
+      `
+    }
   }
 
   function initScreenLayout() {
@@ -57,11 +66,20 @@
     const shareButton = document.querySelector("#share-button");
 
     shareButton.addEventListener("click", async () => {
-      try {
-        await navigator.share(shareData)
-      } catch (err) {
-        console.error(err)
-        showSnackbar('복사에 실패함', 1000)
+      if (navigator.canShare) {
+        try {
+          await navigator.share(metadata.shareData)
+        } catch (err) {
+          console.error(err)
+        }
+      } else {
+        try {
+          await navigator.clipboard.writeText(metadata.clipboardData.content)
+          showSnackbar('클립보드에 복사되었어요.', 3000)
+        } catch (err) {
+          console.error(err)
+          showSnackbar('복사에 실패했습니다.', 3000)
+        }
       }
     })
   }
@@ -70,11 +88,7 @@
     const shareButton = document.querySelector("#share-button-kakao");
 
     shareButton.addEventListener("click", async () => {
-      try {
-        await navigator.share(shareData)
-      } catch (err) {
-        console.error(err)
-      }
+      showSnackbar('카카오톡 공유하기', 3000)
     })
   }
 
@@ -117,7 +131,7 @@
 
         switch (targetName) {
           case screenInfo.introduce.name:
-            if (scrollY < screenInfo.gallary.offsetTop - screenInfo.nav.height) {
+            if (scrollY < screenInfo.gallary.offsetTop - (screenInfo.nav.height)) {
               wrapper.classList.add('selected-item')
               element.style.opacity = 1
             } else {
@@ -127,7 +141,7 @@
             break
 
           case screenInfo.gallary.name:
-            if (scrollY < screenInfo.location.offsetTop - screenInfo.nav.height && scrollY >= screenInfo.gallary.offsetTop - screenInfo.nav.height) {
+            if (scrollY < screenInfo.location.offsetTop - (screenInfo.nav.height) && scrollY >= screenInfo.gallary.offsetTop - (screenInfo.nav.height)) {
               wrapper.classList.add('selected-item')
               element.style.opacity = 1
             } else {
@@ -137,7 +151,7 @@
             break
 
           case screenInfo.location.name:
-            if (scrollY < screenInfo.contact.offsetTop - screenInfo.nav.height && scrollY >= screenInfo.location.offsetTop - screenInfo.nav.height) {
+            if (scrollY < screenInfo.contact.offsetTop - (screenInfo.nav.height) && scrollY >= screenInfo.location.offsetTop - (screenInfo.nav.height)) {
               wrapper.classList.add('selected-item')
               element.style.opacity = 1
             } else {
@@ -147,7 +161,7 @@
             break
 
           case screenInfo.contact.name:
-            if (scrollY < screenInfo.guestbook.offsetTop - screenInfo.nav.height && scrollY >= screenInfo.contact.offsetTop - screenInfo.nav.height) {
+            if (scrollY < screenInfo.guestbook.offsetTop - (screenInfo.nav.height) && scrollY >= screenInfo.contact.offsetTop - (screenInfo.nav.height)) {
               wrapper.classList.add('selected-item')
               element.style.opacity = 1
             } else {
@@ -157,7 +171,7 @@
             break
 
           case screenInfo.guestbook.name:
-            if (scrollY >= screenInfo.guestbook.offsetTop - screenInfo.nav.height) {
+            if (scrollY > screenInfo.guestbook.offsetTop - (screenInfo.nav.height)) {
               wrapper.classList.add('selected-item')
               element.style.opacity = 1
             } else {
@@ -178,10 +192,14 @@
   }
 
   window.addEventListener('load', () => {
+    scrollY = window.scrollY
     initScreenLayout()
-    
+    changeMenuVisibility()
+    selectedMenu()
+
     window.addEventListener('scroll', () => {
       scrollY = window.scrollY
+      initScreenLayout()
       changeMenuVisibility()
       selectedMenu()
     })
