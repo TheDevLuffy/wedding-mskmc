@@ -60,6 +60,185 @@
   color: white;
 }
 
+.faded-background {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000046;
+}
+
+.modal-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  min-height: 100px;
+  height: fit-content;
+  border-radius: 10px;
+}
+
+@media (min-width: 400px) {
+  .modal {
+    width: 375px;
+  }
+}
+
+@media (max-width: 399px) {
+  .modal {
+    width: 90%;
+    min-width: none;
+  }
+}
+
+.modal .close-modal-button {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal .modal-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin-bottom: 54px;
+}
+
+.modal .modal-content-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal .modal-content .modal-margin-column {
+  margin: 8px;
+}
+
+.modal .modal-content .margin-text {
+  margin: 4px;
+}
+
+.modal .modal-content-profile .modal-profile-avatar {
+  border: 1px solid #0000000F;
+  border-radius: 50%;
+  background-color: gray;
+  height: 56px;
+  width: 56px;
+}
+
+.modal .modal-content-profile .modal-profile-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+}
+
+.modal .modal-content-profile .modal-profile-name .title-text {
+  font-family: NanumSquare Neo;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #767678;
+}
+
+.modal .modal-content-profile .modal-profile-name .name-text {
+  font-family: NanumSquare Neo;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #303038;
+}
+
+.modal .modal-content-profile .modal-profile-phone {
+  display: flex;
+  flex-direction: row;
+  height: 38px;
+  width: 186px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal .modal-content-profile .phone-blue {
+  border: 1px solid #31496A0F;
+  background: #F8F9FF;
+}
+
+.modal .modal-content-profile .phonenumber-blue-text {
+  font-family: NanumSquare Neo;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 17px;
+  text-align: center;
+  color: #303038;
+}
+
+.modal .modal-content-profile .phone-red {
+  border: 1px solid #C987870F;
+  background: #FFF8F8;
+}
+
+.modal .modal-content-profile .phonenumber-red-text {
+  font-family: NanumSquare Neo;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #DD6C6C;
+}
+
+.modal .modal-title {
+  width: 100%;
+  text-align: center;
+}
+
+.modal .modal-content {
+  width: 100%;
+
+}
+
+.modal .modal-footer {
+  position: absolute;
+  bottom: 0;
+  height: fit-content;
+  width: 100%;
+}
+
+.modal .modal-buttons {
+  display: flex;
+  height: 54px;
+  border-top: 1px solid #EFEFF0;
+}
+
+.modal .modal-button {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal .modal-button .modal-button-text {
+  width: fit-content;
+  height: fit-content;
+}
+
 .center-div {
   display: flex;
   justify-content: center;

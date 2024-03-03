@@ -76,6 +76,57 @@
     }
   }
 
+  const contacts = [
+    {
+      buttonId: "contact-button-male",
+      profileImageUrl: "",
+      title: "신랑",
+      name: "권민철",
+      phoneNumber: "010-3883-9801",
+      color: "blue",
+    },
+    {
+      buttonId: "contact-button-male-father",
+      profileImageUrl: "",
+      title: "신랑 아버지",
+      name: "권영준",
+      phoneNumber: "010-6345-5555",
+      color: "blue",
+    },
+    {
+      buttonId: "contact-button-male-mother",
+      profileImageUrl: "",
+      title: "신랑 어머니",
+      name: "이영희",
+      phoneNumber: "010-8749-9802",
+      color: "blue",
+    },
+    {
+      buttonId: "contact-button-female",
+      profileImageUrl: "",
+      title: "신부",
+      name: "민슬기",
+      phoneNumber: "010-6478-4908",
+      color: "red",
+    },
+    {
+      buttonId: "contact-button-female-father",
+      profileImageUrl: "",
+      title: "신부 아버지",
+      name: "민병용",
+      phoneNumber: "010-9406-4908",
+      color: "red",
+    },
+    {
+      buttonId: "contact-button-female-mother",
+      profileImageUrl: "",
+      title: "신부 어머니",
+      name: "문예덕",
+      phoneNumber: "010-6215-4908",
+      color: "red",
+    },
+  ]
+
   function initScreenLayout() {
     document.querySelector('#introduce').style.marginTop = `${screenInfo.header.height + screenInfo.nav.height}px`
   }
@@ -144,7 +195,7 @@
 
   function initLocationButtonKakaomap() {
     const naviButton = document.querySelector(linkData.kakao.buttonId)
-    
+
     naviButton.addEventListener("click", async () => {
       if (isMobile()) {
         window.open(linkData.kakao.mobile)
@@ -153,7 +204,7 @@
       }
     })
   }
-  
+
   function initLocationButtonKakaoNavi() {
     const naviButton = document.querySelector(linkData.kakaonavi.buttonId)
 
@@ -212,6 +263,99 @@
     setTimeout(() => {
       snackbar.style.display = 'none'
     }, duration)
+  }
+
+  function openModal() {
+    const modal = document.querySelector("#modal")
+
+    modal.style.setProperty('display', 'flex')
+
+    document.body.style.height = '100%'
+    document.body.style.overflow = 'hidden'
+  }
+
+  function closeModal() {
+    const modal = document.querySelector("#modal")
+
+    modal.style.setProperty('display', 'none')
+
+    document.body.style.removeProperty('height')
+    document.body.style.removeProperty('overflow')
+  }
+
+  function setupModalButtons() {
+    initCloseModalButton()
+  }
+
+  function initCloseModalButton() {
+    const background = document.querySelector(".faded-background")
+    const modal = document.querySelector(".modal")
+    const button = document.querySelector("#close-modal")
+
+    background.addEventListener("click", (event) => {
+      closeModal()
+    })
+    modal.addEventListener("click", (event) => {
+      event.stopPropagation()
+    })
+    button.addEventListener("click", () => {
+      closeModal()
+    })
+  }
+
+  function setUpContactButtons() {
+    document.querySelectorAll(".contact-item")
+      .forEach(element => element.addEventListener("click", onClickModalListener))
+  }
+
+  function onClickModalListener() {
+    const clickedElementId = this.id
+
+    const foundContact = contacts.find(element => element.buttonId == clickedElementId)
+
+    renderContactModalContent(foundContact)
+    // initPhoneCallButton(foundContact.phoneNumber)
+    openModal()
+  }
+
+  function renderContactModalContent(contactElement) {
+    const targetContent = document.querySelector(`.modal-content`)
+
+    targetContent.innerHTML = renderContact(contactElement)
+  }
+
+  function renderContact(contactElement) {
+    return `
+      <div class="modal-content-profile">
+        <div class="modal-profile-avatar">
+          ${contactElement.profileImageUrl}
+        </div>
+        <div class="modal-margin-column"></div>
+        <div class="modal-profile-name">
+          <div class="title-text">
+            ${contactElement.title}
+          </div>
+          <div class="margin-text"></div>
+          <div class="name-text">
+            ${contactElement.name}
+          </div>
+        </div>
+        <div class="modal-margin-column"></div>
+        <div class="modal-profile-phone phone-${contactElement.color}">
+          <div class="phonenumber-${contactElement.color}-text">
+            ${contactElement.phoneNumber}
+          </div>
+        </div>
+      </div>
+    `
+  }
+
+  function initPhoneCallButton(phoneNumber) {
+    const button = element.querySelector(".open-phone-call")
+
+    button.addEventListener("click", () => {
+      document.location.href=`tel:${phoneNumber}`
+    })
   }
 
   function activateMenuAnimation() {
@@ -319,5 +463,7 @@
   initScreenInfo()
   initShareButtons()
   initLocationButtons()
+  setupModalButtons()
+  setUpContactButtons()
   activateMenuAnimation()
 })()

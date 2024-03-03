@@ -25,6 +25,55 @@
 </head>
 
 <body>
+  <div class="modal-container faded-background" id="modal">
+    <div class="modal">
+      <div class="close-modal-button" id="close-modal">
+        <embed src="asset/svg/icn_close.svg">
+      </div>
+      <div class="modal-body">
+        <div class="modal-title">
+          <!-- 제목 -->
+        </div>
+        <div class="modal-content">
+          <div class="modal-content-profile">
+            <div class="modal-profile-avatar">
+
+            </div>
+            <div class="modal-margin-column"></div>
+            <div class="modal-profile-name">
+              <div class="title-text">
+                신랑
+              </div>
+              <div class="margin-text"></div>
+              <div class="name-text">
+                권민철
+              </div>
+            </div>
+            <div class="modal-margin-column"></div>
+            <div class="modal-profile-phone phone-blue">
+              <div class="phonenumber-blue-text">
+                010-3888-9801
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-buttons">
+          <div class="modal-button">
+            <div class="modal-button-text">
+              복사하기
+            </div>
+          </div>
+          <div class="modal-button open-phone-call">
+            <div class="modal-button-text">
+              전화하기
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="before-load">
     <div class="loading">
       <dotlottie-player src="https://lottie.host/68f9f574-fdd6-46fc-9c01-ce3bea067d7b/07Y3eWH8N5.json"
@@ -39,9 +88,7 @@
     </nav>
     <div class="snackbar-container" id="snackbar">
       <div class="snackbar">
-        <div class="snackbar-text" id="snackbar-text">
-          어쩌구 저쩌구
-        </div>
+        <div class="snackbar-text" id="snackbar-text"></div>
       </div>
     </div>
     <nav class="global-nav width-restriction">
@@ -202,7 +249,7 @@
               카카오 내비
             </div>
           </div>
-          <div class="map-icon-button"  id="location-button-tmap">
+          <div class="map-icon-button" id="location-button-tmap">
             <div class="button-icon">
               <img src="asset/img_tmap.png">
             </div>
@@ -293,7 +340,7 @@
         신랑측
       </div>
       <div class="contact-list">
-        <div class="contact-item">
+        <div class="contact-item" id="contact-button-male">
           <div class="contact-avatar">
 
           </div>
@@ -307,7 +354,7 @@
             <div class="icon">></div>
           </div>
         </div>
-        <div class="contact-item">
+        <div class="contact-item" id="contact-button-male-father">
           <div class="contact-avatar">
 
           </div>
@@ -321,7 +368,7 @@
             <div class="icon">></div>
           </div>
         </div>
-        <div class="contact-item">
+        <div class="contact-item" id="contact-button-male-mother">
           <div class="contact-avatar">
 
           </div>
@@ -342,7 +389,7 @@
         신부측
       </div>
       <div class="contact-list">
-        <div class="contact-item">
+        <div class="contact-item" id="contact-button-female">
           <div class="contact-avatar">
 
           </div>
@@ -356,7 +403,7 @@
             <div class="icon">></div>
           </div>
         </div>
-        <div class="contact-item">
+        <div class="contact-item" id="contact-button-female-father">
           <div class="contact-avatar">
 
           </div>
@@ -370,7 +417,7 @@
             <div class="icon">></div>
           </div>
         </div>
-        <div class="contact-item">
+        <div class="contact-item" id="contact-button-female-mother">
           <div class="contact-avatar">
 
           </div>
