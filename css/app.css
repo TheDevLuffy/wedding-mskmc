@@ -16,7 +16,17 @@
   min-width: 375px;
 }
 
-.loading {
+.before-load {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #213856;
+  transition: opacity 2s ease-in-out;
+  z-index: 200;
+  overflow: hidden;
+}
+
+.loading-animation {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -172,6 +182,7 @@
   width: 186px;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .modal .modal-content-profile .phone-blue {
@@ -232,6 +243,7 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .modal .modal-button .modal-button-text {

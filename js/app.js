@@ -76,56 +76,98 @@
     }
   }
 
-  const contacts = [
-    {
-      buttonId: "contact-button-male",
-      profileImageUrl: "",
-      title: "신랑",
-      name: "권민철",
-      phoneNumber: "010-3883-9801",
-      color: "blue",
+  const snackbarMessage = {
+    phoneNumberSuccess: "전화번호가 복사되었습니다."
+  }
+
+  const modal = {
+    contacts: {
+      contents: [
+        {
+          buttonId: "contact-button-male",
+          profileImageUrl: "",
+          title: "신랑",
+          name: "권민철",
+          phoneNumber: "010-3883-9801",
+          color: "blue",
+        },
+        {
+          buttonId: "contact-button-male-father",
+          profileImageUrl: "",
+          title: "신랑 아버지",
+          name: "권영준",
+          phoneNumber: "010-6345-5555",
+          color: "blue",
+        },
+        {
+          buttonId: "contact-button-male-mother",
+          profileImageUrl: "",
+          title: "신랑 어머니",
+          name: "이영희",
+          phoneNumber: "010-8749-9802",
+          color: "blue",
+        },
+        {
+          buttonId: "contact-button-female",
+          profileImageUrl: "",
+          title: "신부",
+          name: "민슬기",
+          phoneNumber: "010-6478-4908",
+          color: "red",
+        },
+        {
+          buttonId: "contact-button-female-father",
+          profileImageUrl: "",
+          title: "신부 아버지",
+          name: "민병용",
+          phoneNumber: "010-9406-4908",
+          color: "red",
+        },
+        {
+          buttonId: "contact-button-female-mother",
+          profileImageUrl: "",
+          title: "신부 어머니",
+          name: "문예덕",
+          phoneNumber: "010-6215-4908",
+          color: "red",
+        },
+      ],
+      buttons: [
+        {
+          buttonId: 'copy',
+          name: '복사하기',
+          onClick: onClickCopyPhoneNumber
+        },
+        {
+          buttonId: 'call',
+          name: '전화하기',
+          onClick: onClickCall
+        },
+      ]
     },
-    {
-      buttonId: "contact-button-male-father",
-      profileImageUrl: "",
-      title: "신랑 아버지",
-      name: "권영준",
-      phoneNumber: "010-6345-5555",
-      color: "blue",
-    },
-    {
-      buttonId: "contact-button-male-mother",
-      profileImageUrl: "",
-      title: "신랑 어머니",
-      name: "이영희",
-      phoneNumber: "010-8749-9802",
-      color: "blue",
-    },
-    {
-      buttonId: "contact-button-female",
-      profileImageUrl: "",
-      title: "신부",
-      name: "민슬기",
-      phoneNumber: "010-6478-4908",
-      color: "red",
-    },
-    {
-      buttonId: "contact-button-female-father",
-      profileImageUrl: "",
-      title: "신부 아버지",
-      name: "민병용",
-      phoneNumber: "010-9406-4908",
-      color: "red",
-    },
-    {
-      buttonId: "contact-button-female-mother",
-      profileImageUrl: "",
-      title: "신부 어머니",
-      name: "문예덕",
-      phoneNumber: "010-6215-4908",
-      color: "red",
-    },
-  ]
+  }
+
+  function onClickCopyPhoneNumber(phoneNumber) {
+    copyToClipboard(phoneNumber, snackbarMessage.phoneNumberSuccess)
+  }
+
+  function onClickCall(phoneNumber) {
+    callTo(phoneNumber)
+  }
+
+  function copyToClipboard(content, message) {
+    navigator.clipboard.writeText(content)
+      .then(() => {
+        showSnackbar(message, 3000)
+      })
+      .catch(error => {
+        console.error(error)
+      })
+  }
+
+  function callTo(phoneNumber) {
+    document.location.href = `tel:${phoneNumber}`
+  }
 
   function initScreenLayout() {
     document.querySelector('#introduce').style.marginTop = `${screenInfo.header.height + screenInfo.nav.height}px`
@@ -305,23 +347,40 @@
 
   function setUpContactButtons() {
     document.querySelectorAll(".contact-item")
-      .forEach(element => element.addEventListener("click", onClickModalListener))
+      .forEach(element => element.addEventListener("click", onClickContactOpenModalListener))
   }
 
-  function onClickModalListener() {
+  function onClickContactOpenModalListener() {
     const clickedElementId = this.id
 
-    const foundContact = contacts.find(element => element.buttonId == clickedElementId)
+    const foundContact = modal.contacts.contents.find(element => element.buttonId == clickedElementId)
 
     renderContactModalContent(foundContact)
-    // initPhoneCallButton(foundContact.phoneNumber)
+    renderContactModalButtons(foundContact)
+
+    initContactButtons(foundContact)
+    initContactModalButtons(modal.contacts.buttons, foundContact.phoneNumber)
+
     openModal()
   }
 
   function renderContactModalContent(contactElement) {
-    const targetContent = document.querySelector(`.modal-content`)
+    const targetContent = document.querySelector('.modal-content')
 
     targetContent.innerHTML = renderContact(contactElement)
+  }
+
+  function initContactButtons(contactElement) {
+    document.querySelector('.modal-profile-phone')
+      .addEventListener("click", async () => {
+        copyToClipboard(contactElement.phoneNumber, snackbarMessage.phoneNumberSuccess)
+      })
+  }
+
+  function renderContactModalButtons(contactElement) {
+    const targetButton = document.querySelector(`.modal-buttons`)
+
+    targetButton.innerHTML = renderButtons(modal.contacts.buttons)
   }
 
   function renderContact(contactElement) {
@@ -350,11 +409,25 @@
     `
   }
 
-  function initPhoneCallButton(phoneNumber) {
-    const button = element.querySelector(".open-phone-call")
+  function renderButtons(buttons) {
+    return buttons.map((button, index) => {
+      return `
+        <div class="modal-button" id="modal-button-${index}">
+          <div class="modal-button-text">
+            ${button.name}
+          </div>
+        </div>
+      `
+    })
+  }
+  
+  function initContactModalButtons(buttons, phoneNumber) {
+    buttons.map((button, index) => {
+      const buttonElement = document.querySelector(`#modal-button-${index}`)
 
-    button.addEventListener("click", () => {
-      document.location.href=`tel:${phoneNumber}`
+      buttonElement.addEventListener('click', () => {
+        button.onClick(phoneNumber)
+      })
     })
   }
 
@@ -444,6 +517,20 @@
       document.body.classList.remove('global-nav-sticky')
     }
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const loading = document.querySelector(".before-load")
+
+    window.addEventListener('load', () => {
+      loading.style.opacity = 0
+
+      setTimeout(function () {
+        loading.style.display = 'none'
+      }, 3000)
+    })
+
+    loading.style.opacity = 1;
+  })
 
   window.addEventListener('load', () => {
     scrollY = window.scrollY
