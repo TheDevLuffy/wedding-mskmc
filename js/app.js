@@ -51,6 +51,49 @@
     }
   }
 
+  const gallaryImages = [
+    {
+      no: 1,
+      src: "asset/gallary/JH_04160 copy.jpeg",
+    },
+    {
+      no: 2,
+      src: "asset/gallary/JH_04.jpeg",
+    },
+    {
+      no: 3,
+      src: "asset/gallary/JH_03349 copy.jpeg",
+    },
+    {
+      no: 4,
+      src: "asset/gallary/JH_04144 copy.jpeg",
+    },
+    {
+      no: 5,
+      src: "asset/gallary/JH_03124 copy.jpeg"
+    },
+    {
+      no: 6,
+      src: "asset/gallary/JH_03442 copy.jpeg"
+    },
+    {
+      no: 7,
+      src: "asset/gallary/JH_03316 copy.jpeg"
+    },
+    {
+      no: 8,
+      src: "asset/gallary/JH_03195 copy.jpeg"
+    },
+    {
+      no: 9,
+      src: "asset/gallary/JH_03268 copy.jpeg"
+    },
+    {
+      no: 10,
+      src: "asset/gallary/JH_03496 copy.jpeg"
+    },
+  ]
+
   const linkData = {
     naver: {
       buttonId: '#location-button-naver',
@@ -263,6 +306,16 @@
     shareButton.addEventListener("click", async () => {
       showSnackbar('카카오톡 공유하기', 3000)
     })
+  }
+
+  function initGallary() {
+    const gallaryContainer = document.querySelector(".gallary-container")
+
+    gallaryContainer.innerHTML = gallaryImages.map(image => (
+      `
+        <div class="gallary-container-item"><img class="gallery-image" src="${image.src}" /></div>
+      `
+    )).join("")
   }
 
   function initLocationButtons() {
@@ -651,12 +704,13 @@
     })
   })
 
-  initScreenLayout()
-  initScreenInfo()
+  initGallary()
   initShareButtons()
   initLocationButtons()
   initAccountLayout()
   setupModalButtons()
   setUpContactButtons()
   activateMenuAnimation()
+  initScreenLayout()
+  initScreenInfo()
 })()

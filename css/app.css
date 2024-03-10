@@ -458,21 +458,102 @@ div.divider {
   padding: 0 1.5rem;
 }
 
-.gallary-image-grid {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+.gallary-container {
+  display: grid;
+	grid-gap: 10px;
+	gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  /* grid-template-rows: repeat(7, 1fr); */
 }
 
-.gallary-image-row {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-between;
+.gallary-container .gallary-container-item {
+  overflow: hidden;
+  cursor: pointer;
 }
 
-.gallary-item {
-  flex: 1;
+.gallary-container .gallery-image {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.gallary-container .gallary-container-item:nth-child(1) {
+	grid-column-start: 1;
+	grid-column-end: 4;
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+
+.gallary-container .gallary-container-item:nth-child(2) {
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 3;
+	grid-row-end: 5;
+  aspect-ratio: 1 / 1;
+}
+
+.gallary-container .gallary-container-item:nth-child(3) {
+	grid-column-start: 3;
+	grid-column-end: 4;
+	grid-row-start: 3;
+	grid-row-end: 4;
+  aspect-ratio: 1 / 1;
+}
+
+.gallary-container .gallary-container-item:nth-child(4) {
+	grid-column-start: 3;
+	grid-column-end: 4;
+	grid-row-start: 4;
+	grid-row-end: 5;
+  aspect-ratio: 1 / 1;
+}
+
+.gallary-container .gallary-container-item:nth-child(5) {
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 5;
+	grid-row-end: 6;
+  aspect-ratio: 1 / 1;
+}
+
+.gallary-container .gallary-container-item:nth-child(6) {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 5;
+	grid-row-end: 6;
+  aspect-ratio: 1 / 1;
+}
+
+.gallary-container .gallary-container-item:nth-child(7) {
+	grid-column-start: 3;
+	grid-column-end: 4;
+	grid-row-start: 5;
+	grid-row-end: 6;
+  aspect-ratio: 1 / 1;
+}
+
+.gallary-container .gallary-container-item:nth-child(8) {
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 6;
+	grid-row-end: 7;
+  aspect-ratio: 1 / 1;
+}
+
+.gallary-container .gallary-container-item:nth-child(9) {
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 7;
+	grid-row-end: 8;
+  aspect-ratio: 1 / 1;
+}
+
+.gallary-container .gallary-container-item:nth-child(10) {
+	grid-column-start: 2;
+	grid-column-end: 4;
+	grid-row-start: 6;
+	grid-row-end: 8;
+  aspect-ratio: 1 / 1;
 }
 
 .square {
