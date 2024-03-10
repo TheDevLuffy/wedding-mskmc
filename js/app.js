@@ -44,9 +44,9 @@
     },
     clipboardData: {
       content: `
-      2024년 6월 8일 토요일 오전 11시 30분
-      민철과 슬기의 결혼에 초대합니다.
-      https://wedding.mskmc.world
+2024년 6월 8일 토요일 오전 11시 30분
+민철과 슬기의 결혼에 초대합니다.
+https://wedding.mskmc.world
       `
     }
   }
@@ -301,7 +301,39 @@
     const shareButton = document.querySelector("#share-button-kakao");
 
     shareButton.addEventListener("click", async () => {
-      showSnackbar('카카오톡 공유하기', 3000)
+
+      if (isMobile()) {
+        Kakao.Share.sendDefault({
+          objectType: 'feed',
+          content: {
+            title: '민철과 슬기의 결혼에 초대합니다.',
+            description: '2024년 6월 8일 토요일 오전 11시 30분 그랜드힐 컨벤션 사브리나홀',
+            imageUrl: 'https://wedding.mskmc.world/asset/og_image.jpg',
+            imageWidth: 1500,
+            imageHeight: 1000,
+            link: {
+              mobileWebUrl: 'https://wedding.mskmc.world',
+              webUrl: 'https://wedding.mskmc.world',
+            },
+          },
+          itemContent: {
+            profileText: '권민철 ❤️ 민슬기',
+            profileImageUrl: 'https://wedding.mskmc.world/favicon.ico',
+          },
+          buttons: [
+            {
+              title: '청첩장 구경하기',
+              link: {
+                mobileWebUrl: 'https://wedding.mskmc.world',
+                webUrl: 'https://wedding.mskmc.world',
+              },
+            },
+          ],
+        })
+      } else {
+        await navigator.clipboard.writeText(metadata.clipboardData.content)
+        showSnackbar('클립보드에 복사되었어요. 카카오톡으로 공유해보세요.', 3000)
+      }
     })
   }
 
