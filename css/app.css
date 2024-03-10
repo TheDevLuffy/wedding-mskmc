@@ -103,6 +103,44 @@
   border-radius: 10px;
 }
 
+.image-viewer {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  transform: translate(-50%, -50%);
+}
+
+.image-viewer .image-viewer-controller {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.image-viewer .image-viewer-controller div {
+  font-family: NanumSquare Neo;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #FFFFFF; 
+}
+
+.image-viewer .control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
 @media (min-width: 400px) {
   .modal {
     width: 375px;

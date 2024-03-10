@@ -311,11 +311,19 @@
   function initGallary() {
     const gallaryContainer = document.querySelector(".gallary-container")
 
-    gallaryContainer.innerHTML = gallaryImages.map(image => (
+    gallaryContainer.innerHTML = gallaryImages.map((image, index) => (
       `
-        <div class="gallary-container-item"><img class="gallery-image" src="${image.src}" /></div>
+        <div class="gallary-container-item" id="gallary-item-${index}"><img class="gallery-image" src="${image.src}" /></div>
       `
     )).join("")
+
+    gallaryImages.forEach((image, index) => {
+      const gallaryItem = document.querySelector(`#gallary-item-${index}`)
+
+      gallaryItem.addEventListener('click', () => {
+        openImageViewer(image, index)
+      })
+    })
   }
 
   function initLocationButtons() {
@@ -438,27 +446,27 @@
     const background = document.querySelector(".faded-background")
 
     background.style.setProperty('display', 'flex')
+    
+    document.body.style.overflow = 'hidden'
   }
 
   function disableFadedBackground() {
     const background = document.querySelector(".faded-background")
 
     background.style.setProperty('display', 'none')
+
+    document.body.style.removeProperty('overflow')
   }
 
   function showModal() {
     const modal = document.querySelector("#modal")
     modal.style.setProperty('display', 'flex')
-    
-    document.body.style.overflow = 'hidden'
   }
 
   function hiddeModal() {
     const modal = document.querySelector("#modal")
 
     modal.style.setProperty('display', 'none')
-
-    document.body.style.removeProperty('overflow')
   }
 
   function initFadedBackgroundClick() {
@@ -466,7 +474,31 @@
 
     background.addEventListener("click", (event) => {
       closeModal()
+      hideImageViewer()
     })
+  }
+
+  function showImageViewer() {
+    const imageViewer = document.querySelector("#image-viewer")
+
+    imageViewer.style.setProperty('display', 'flex')
+  }
+
+  function hideImageViewer() {
+    const imageViewer = document.querySelector("#image-viewer")
+
+    imageViewer.style.setProperty('display', 'none')
+  }
+
+  function openImageViewer(image, index) {
+    const imageViewImage = document.querySelector("#image-viewer-image")
+    const imageViewerIndex = document.querySelector("#image-viewer-index")
+
+    imageViewImage.src = image.src
+    imageViewerIndex.innerText = `${index + 1} / ${gallaryImages.length}`
+
+    enableFadedBackground()
+    showImageViewer()
   }
 
   function initCloseModalButton() {
