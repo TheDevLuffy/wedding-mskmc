@@ -77,7 +77,8 @@
   }
 
   const snackbarMessage = {
-    phoneNumberSuccess: "전화번호가 복사되었습니다."
+    phoneNumberSuccess: "전화번호가 복사되었습니다.",
+    addressSucess: "주소가 복사되었습니다.",
   }
 
   const modal = {
@@ -141,7 +142,7 @@
         {
           buttonId: 'call',
           name: '전화하기',
-          onClick: onClickCall
+          onClick: onClickCallPhoneNumber
         },
       ]
     },
@@ -151,7 +152,11 @@
     copyToClipboard(phoneNumber, snackbarMessage.phoneNumberSuccess)
   }
 
-  function onClickCall(phoneNumber) {
+  function onClockCopyAddress(address) {
+    copyToClipboard(address, snackbarMessage.addressSucess)
+  }
+
+  function onClickCallPhoneNumber(phoneNumber) {
     callTo(phoneNumber)
   }
 
@@ -217,10 +222,20 @@
   }
 
   function initLocationButtons() {
+    initLocationCopyButton()
     initLocationButtonNaver()
     initLocationButtonKakaomap()
     initLocationButtonKakaoNavi()
     initLocationButtonTmap()
+  }
+
+  function initLocationCopyButton() {
+    const aTag = document.querySelector(".copy")
+
+    aTag.addEventListener("click", (event) => {
+      event.preventDefault()
+      onClockCopyAddress("서울시 강남구 역삼로 604")
+    })
   }
 
   function initLocationButtonNaver() {
@@ -418,7 +433,7 @@
           </div>
         </div>
       `
-    })
+    }).join(`<div style="height: 100%; width: 1px; background-color: #EFEFF0;"></div>`)
   }
   
   function initContactModalButtons(buttons, phoneNumber) {
