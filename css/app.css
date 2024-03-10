@@ -104,6 +104,10 @@
   border-radius: 10px;
 }
 
+.image-slide {
+  display: none;
+}
+
 .image-viewer {
   display: none;
   flex-direction: column;

@@ -37,6 +37,7 @@
   }
 
   const metadata = {
+    title: "민슬기 ❤️ 권민철",
     shareData: {
       title: "민슬기 ❤️ 권민철",
       text: "2024년 6월 8일 오전 11시 30분 결혼식에 초대합니다.",
@@ -52,10 +53,12 @@ https://wedding.mskmc.world
   }
 
   const imageViewer = {
+    initialX: null,
     currentImage: {
       src: "asset/gallary/JH_04160 copy.jpeg",
     },
     currentIndex: 0,
+    slides: 0,
   }
 
   const gallaryImages = [
@@ -337,6 +340,61 @@ https://wedding.mskmc.world
     })
   }
 
+  function showSlide(index) {
+    const slides = document.querySelectorAll('.image-slide')
+
+    slides.forEach((slide, i) => {
+      slide.style.display = i === index ? 'block' : 'none'
+    })
+
+    const imageViewerIndex = document.querySelector("#image-viewer-index")
+    imageViewerIndex.innerText = `${imageViewer.currentIndex + 1} / ${gallaryImages.length}`
+  }
+
+  function startTouch(e) {
+    imageViewer.initialX = e.touches[0].clientX
+  }
+
+  function moveTouch(e) {
+    if (imageViewer.initialX === null) {
+      return
+    }
+
+    let currentX = e.touches[0].clientX
+    let diffX = imageViewer.initialX - currentX
+
+    if (diffX > 0) {
+      // left swipe
+      imageViewer.currentIndex = (imageViewer.currentIndex + 1) % imageViewer.slides.length
+    } else {
+      // right swipe
+      imageViewer.currentIndex = (imageViewer.currentIndex - 1 + imageViewer.slides.length) % imageViewer.slides.length
+    }
+
+    showSlide(imageViewer.currentIndex)
+    imageViewer.initialX = null
+  }
+
+  function initSlider() {
+    document.getElementById('image-slider').addEventListener('touchstart', startTouch, false);
+    document.getElementById('image-slider').addEventListener('touchmove', moveTouch, false);
+  }
+
+  function initImageViewer() {
+    const imageSlider = document.querySelector('#image-slider')
+
+    imageSlider.innerHTML = gallaryImages.map((image, index) => (
+      `
+        <img id="image-viewer-image" class="image-slide" src="${image.src}">
+      `
+    )).join("")
+
+    const slides = document.querySelectorAll('.image-slide')
+    imageViewer.slides = slides
+
+    initSlider()
+  }
+
   function initGallary() {
     const gallaryContainer = document.querySelector(".gallary-container")
 
@@ -360,7 +418,7 @@ https://wedding.mskmc.world
     prevImage.addEventListener('click', (event) => {
       event.preventDefault()
       setImageViewerPrevImage()
-      renderImageView()
+      showSlide(imageViewer.currentIndex)
     })
 
     const nextImage = document.querySelector("#get-next-image")
@@ -368,7 +426,7 @@ https://wedding.mskmc.world
     nextImage.addEventListener('click', (event) => {
       event.preventDefault()
       setImageViewerNextImage()
-      renderImageView()
+      showSlide(imageViewer.currentIndex)
     })
   }
 
@@ -563,18 +621,18 @@ https://wedding.mskmc.world
   }
 
   function openImageViewer() {
-    renderImageView()
+    showSlide(imageViewer.currentIndex)
     enableFadedBackground('90%')
     showImageViewer()
   }
 
-  function renderImageView() {
-    const imageViewImage = document.querySelector("#image-viewer-image")
-    const imageViewerIndex = document.querySelector("#image-viewer-index")
+  // function renderImageView() {
+  //   const imageViewImage = document.querySelector("#image-viewer-image")
+  //   const imageViewerIndex = document.querySelector("#image-viewer-index")
 
-    imageViewImage.src = imageViewer.currentImage.src
-    imageViewerIndex.innerText = `${imageViewer.currentIndex + 1} / ${gallaryImages.length}`
-  }
+  //   imageViewImage.src = imageViewer.currentImage.src
+  //   imageViewerIndex.innerText = `${imageViewer.currentIndex + 1} / ${gallaryImages.length}`
+  // }
 
   function initCloseModalButton() {
     const button = document.querySelector("#close-modal")
@@ -832,6 +890,7 @@ https://wedding.mskmc.world
   })
 
   initGallary()
+  initImageViewer()
   initShareButtons()
   initLocationButtons()
   initAccountLayout()
