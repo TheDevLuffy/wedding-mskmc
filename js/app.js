@@ -79,6 +79,7 @@
   const snackbarMessage = {
     phoneNumberSuccess: "전화번호가 복사되었습니다.",
     addressSucess: "주소가 복사되었습니다.",
+    accountCopySuccess: "계좌번호가 복사되었습니다.",
   }
 
   const modal = {
@@ -145,7 +146,50 @@
           onClick: onClickCallPhoneNumber
         },
       ]
-    },
+    }
+  }
+
+  const accountData = {
+    male: [
+      {
+        buttonId: 'account-button-male',
+        name: '권민철',
+        accountNumber: '3333017905482',
+        bankName: '카뱅',
+      },
+      {
+        buttonId: 'account-button-male-father',
+        name: '권영준',
+        accountNumber: '314210038508',
+        bankName: '우리'
+      },
+      {
+        buttonId: 'account-button-male-mother',
+        name: '이영희',
+        accountNumber: '',
+        bankName: '우리'
+      },
+    ],
+    female: [
+      {
+        buttonId: 'account-button-female',
+        name: '민슬기',
+        accountNumber: '9003233746641',
+        bankName: '새마을',
+      },
+      {
+        buttonId: 'account-button-female-father',
+        name: '민병용',
+        accountNumber: '',
+        bankName: '우리'
+      },
+      {
+        buttonId: 'account-button-female-mother',
+        name: '문예덕',
+        accountNumber: '',
+        bankName: '우리'
+      },
+    ]
   }
 
   function onClickCopyPhoneNumber(phoneNumber) {
@@ -435,7 +479,7 @@
       `
     }).join(`<div style="height: 100%; width: 1px; background-color: #EFEFF0;"></div>`)
   }
-  
+
   function initContactModalButtons(buttons, phoneNumber) {
     buttons.map((button, index) => {
       const buttonElement = document.querySelector(`#modal-button-${index}`)
@@ -444,6 +488,52 @@
         button.onClick(phoneNumber)
       })
     })
+  }
+
+  function initAccountLayout() {
+    const maleAccounts = document.querySelector("#male-accounts")
+    const femaleAccounts = document.querySelector("#female-accounts")
+
+    maleAccounts.innerHTML = renderAccounts(accountData.male)
+    femaleAccounts.innerHTML = renderAccounts(accountData.female)
+
+    accountData.male
+      .forEach((account) => {
+        const button = document.querySelector(`#${account.buttonId}`)
+
+        button.addEventListener('click', (e) => {
+          e.preventDefault()
+          copyToClipboard(account.accountNumber, snackbarMessage.accountCopySuccess)
+        })
+      })
+
+    accountData.female
+      .forEach((account) => {
+        const button = document.querySelector(`#${account.buttonId}`)
+
+        button.addEventListener('click', (e) => {
+          e.preventDefault()
+          copyToClipboard(account.accountNumber, snackbarMessage.accountCopySuccess)
+        })
+      })
+  }
+
+  function renderAccounts(accounts) {
+    return accounts.map(account => (
+      `
+        <div class="drop-down-element">
+        <div style="flex: 1.5; font-weight: 700; text-align: center;">
+          ${account.name}
+        </div>
+        <div style="flex: 5">
+          ${account.accountNumber} (${account.bankName})
+        </div>
+        <a style="flex: 1" id=${account.buttonId} href="">
+          복사
+        </a>
+      </div>
+      `
+    )).join(`<div style="height: 1px; width: 100%; background-color: #EFEFF0;"></div>`)
   }
 
   function activateMenuAnimation() {
@@ -565,6 +655,7 @@
   initScreenInfo()
   initShareButtons()
   initLocationButtons()
+  initAccountLayout()
   setupModalButtons()
   setUpContactButtons()
   activateMenuAnimation()
