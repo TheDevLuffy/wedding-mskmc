@@ -51,45 +51,42 @@
     }
   }
 
+  const imageViewer = {
+    currentImage: {
+      src: "asset/gallary/JH_04160 copy.jpeg",
+    },
+    currentIndex: 0,
+  }
+
   const gallaryImages = [
     {
-      no: 1,
       src: "asset/gallary/JH_04160 copy.jpeg",
     },
     {
-      no: 2,
       src: "asset/gallary/JH_04.jpeg",
     },
     {
-      no: 3,
       src: "asset/gallary/JH_03349 copy.jpeg",
     },
     {
-      no: 4,
       src: "asset/gallary/JH_04144 copy.jpeg",
     },
     {
-      no: 5,
       src: "asset/gallary/JH_03124 copy.jpeg"
     },
     {
-      no: 6,
       src: "asset/gallary/JH_03442 copy.jpeg"
     },
     {
-      no: 7,
       src: "asset/gallary/JH_03316 copy.jpeg"
     },
     {
-      no: 8,
       src: "asset/gallary/JH_03195 copy.jpeg"
     },
     {
-      no: 9,
       src: "asset/gallary/JH_03268 copy.jpeg"
     },
     {
-      no: 10,
       src: "asset/gallary/JH_03496 copy.jpeg"
     },
   ]
@@ -321,9 +318,51 @@
       const gallaryItem = document.querySelector(`#gallary-item-${index}`)
 
       gallaryItem.addEventListener('click', () => {
-        openImageViewer(image, index)
+        setImageViewer(image, index)
+        openImageViewer()
       })
     })
+
+    const prevImage = document.querySelector("#get-prev-image")
+
+    prevImage.addEventListener('click', (event) => {
+      event.preventDefault()
+      setImageViewerPrevImage()
+      renderImageView()
+    })
+
+    const nextImage = document.querySelector("#get-next-image")
+
+    nextImage.addEventListener('click', (event) => {
+      event.preventDefault()
+      setImageViewerNextImage()
+      renderImageView()
+    })
+  }
+
+  function setImageViewer(image, index) {
+    imageViewer.currentImage = image
+    imageViewer.currentIndex = index
+  }
+
+  function setImageViewerNextImage() {
+    if (imageViewer.currentIndex >= gallaryImages.length - 1) {
+      imageViewer.currentIndex = 0
+    } else {
+      imageViewer.currentIndex = imageViewer.currentIndex + 1
+    }
+
+    imageViewer.currentImage = gallaryImages[imageViewer.currentIndex]
+  }
+
+  function setImageViewerPrevImage() {
+    if (imageViewer.currentIndex == 0) {
+      imageViewer.currentIndex = gallaryImages.length - 1
+    } else {
+      imageViewer.currentIndex = imageViewer.currentIndex - 1
+    }
+
+    imageViewer.currentImage = gallaryImages[imageViewer.currentIndex]
   }
 
   function initLocationButtons() {
@@ -428,7 +467,7 @@
   }
 
   function openModal() {
-    enableFadedBackground()
+    enableFadedBackground('40%')
     showModal()
   }
 
@@ -442,10 +481,11 @@
     initFadedBackgroundClick()
   }
 
-  function enableFadedBackground() {
+  function enableFadedBackground(opacity) {
     const background = document.querySelector(".faded-background")
 
     background.style.setProperty('display', 'flex')
+    background.style.setProperty('opacity', opacity)
     
     document.body.style.overflow = 'hidden'
   }
@@ -490,15 +530,18 @@
     imageViewer.style.setProperty('display', 'none')
   }
 
-  function openImageViewer(image, index) {
+  function openImageViewer() {
+    renderImageView()
+    enableFadedBackground('90%')
+    showImageViewer()
+  }
+
+  function renderImageView() {
     const imageViewImage = document.querySelector("#image-viewer-image")
     const imageViewerIndex = document.querySelector("#image-viewer-index")
 
-    imageViewImage.src = image.src
-    imageViewerIndex.innerText = `${index + 1} / ${gallaryImages.length}`
-
-    enableFadedBackground()
-    showImageViewer()
+    imageViewImage.src = imageViewer.currentImage.src
+    imageViewerIndex.innerText = `${imageViewer.currentIndex + 1} / ${gallaryImages.length}`
   }
 
   function initCloseModalButton() {
