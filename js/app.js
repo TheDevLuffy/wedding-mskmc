@@ -420,38 +420,58 @@
   }
 
   function openModal() {
-    const modal = document.querySelector("#modal")
-
-    modal.style.setProperty('display', 'flex')
-
-    document.body.style.height = '100%'
-    document.body.style.overflow = 'hidden'
+    enableFadedBackground()
+    showModal()
   }
 
   function closeModal() {
-    const modal = document.querySelector("#modal")
-
-    modal.style.setProperty('display', 'none')
-
-    document.body.style.removeProperty('height')
-    document.body.style.removeProperty('overflow')
+    disableFadedBackground()
+    hiddeModal()
   }
 
   function setupModalButtons() {
     initCloseModalButton()
+    initFadedBackgroundClick()
   }
 
-  function initCloseModalButton() {
+  function enableFadedBackground() {
     const background = document.querySelector(".faded-background")
-    const modal = document.querySelector(".modal")
-    const button = document.querySelector("#close-modal")
+
+    background.style.setProperty('display', 'flex')
+  }
+
+  function disableFadedBackground() {
+    const background = document.querySelector(".faded-background")
+
+    background.style.setProperty('display', 'none')
+  }
+
+  function showModal() {
+    const modal = document.querySelector("#modal")
+    modal.style.setProperty('display', 'flex')
+    
+    document.body.style.overflow = 'hidden'
+  }
+
+  function hiddeModal() {
+    const modal = document.querySelector("#modal")
+
+    modal.style.setProperty('display', 'none')
+
+    document.body.style.removeProperty('overflow')
+  }
+
+  function initFadedBackgroundClick() {
+    const background = document.querySelector(".faded-background")
 
     background.addEventListener("click", (event) => {
       closeModal()
     })
-    modal.addEventListener("click", (event) => {
-      event.stopPropagation()
-    })
+  }
+
+  function initCloseModalButton() {
+    const button = document.querySelector("#close-modal")
+
     button.addEventListener("click", () => {
       closeModal()
     })
