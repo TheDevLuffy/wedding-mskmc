@@ -235,6 +235,15 @@ https://wedding.mskmc.world
     ]
   }
 
+  const accountSection = {
+    male: {
+      show: false
+    },
+    female: {
+      show: false
+    }
+  }
+
   function onClickCopyPhoneNumber(phoneNumber) {
     copyToClipboard(phoneNumber, snackbarMessage.phoneNumberSuccess)
   }
@@ -754,6 +763,39 @@ https://wedding.mskmc.world
           copyToClipboard(account.accountNumber, snackbarMessage.accountCopySuccess)
         })
       })
+
+    maleAccounts.style.display = 'none'
+    femaleAccounts.style.display = 'none'
+  }
+
+  function initAccountButtons() {
+    const maleAccountButton = document.querySelector("#male-account-button")
+    const maleAccountArrow = document.querySelector("#male-account-button-arrow")
+    const maleAccountList = document.querySelector("#male-accounts")
+
+    const femaleAccountButton = document.querySelector("#female-account-button")
+    const femaleAccountArrow = document.querySelector("#female-account-button-arrow")
+    const femaleAccountList = document.querySelector("#female-accounts")
+
+    maleAccountButton.addEventListener('click', (e) => {
+      onClickAccount(maleAccountList, accountSection.male, maleAccountArrow)
+    })
+
+    femaleAccountButton.addEventListener('click', (e) => {
+      onClickAccount(femaleAccountList, accountSection.female, femaleAccountArrow)
+    })
+  }
+
+  function onClickAccount(list, state, arrow) {
+    if (!state.show) {
+      list.style.removeProperty('display')
+      arrow.style.setProperty('transform', 'scaleY(-1)')
+      state.show = true
+    } else {
+      list.style.setProperty('display', 'none')
+      arrow.style.removeProperty('transform')
+      state.show = false
+    }
   }
 
   function renderAccounts(accounts) {
@@ -894,6 +936,7 @@ https://wedding.mskmc.world
   initShareButtons()
   initLocationButtons()
   initAccountLayout()
+  initAccountButtons()
   setupModalButtons()
   setUpContactButtons()
   activateMenuAnimation()

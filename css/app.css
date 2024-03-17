@@ -955,12 +955,18 @@ div.divider {
 }
 
 .section-account .drop-down .button-text {
+  display: flex;
+  flex-direction: row;
   font-family: NanumSquare Neo;
   font-size: 15px;
   font-weight: 700;
   line-height: 17px;
   letter-spacing: 0em;
   text-align: center;
+}
+
+.section-account .down-button {
+  padding-left: 4px;
 }
 
 .section-account .drop-down .blue-text {
