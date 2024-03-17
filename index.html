@@ -71,15 +71,49 @@
       </div>
     </div>
   </div>
-  <div class="modal-container" id="modal">
+
+  <div class="modal-container" id="guestbook-modal">
+    <div class="modal">
+      <div class="close-modal-button" id="close-guestbook-modal">
+        <img src="asset/svg/icn_close.svg">
+      </div>
+      <div class="modal-body">
+        <div class="modal-title">
+          방명록 남기기
+        </div>
+        <div class="modal-content">
+          <div class="modal-input">
+            <div class="modal-input-name">
+              작성자
+            </div>
+            <input id="guestbook-writer-name" class="modal-input-textstyle modal-input-box" type="text" placeholder="이름을 작성해주세요." maxlength="20"></input>
+          </div>
+          <div class="modal-input">
+            <div class="modal-input-name">
+              내용
+            </div>
+            <textarea id="guestbook-content" class="modal-input-textstyle modal-input-box" rows="10" placeholder="하고싶은 말을 남겨주세요."></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-buttons">
+          <div class="modal-button" id="guestbook-submit-button">
+            <div class="guestbook-submit-text">
+              등록하기
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-container" id="contact-modal">
     <div class="modal">
       <div class="close-modal-button" id="close-modal">
         <img src="asset/svg/icn_close.svg">
       </div>
       <div class="modal-body">
-        <div class="modal-title">
-          <!-- 제목 -->
-        </div>
         <div class="modal-content">
           <div class="modal-content-profile">
             <div class="modal-profile-avatar">
@@ -105,7 +139,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <div class="modal-buttons">
+        <div class="modal-buttons" id="contact-modal-buttons">
         </div>
       </div>
     </div>

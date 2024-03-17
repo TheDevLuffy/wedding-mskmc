@@ -268,12 +268,64 @@
 
 .modal .modal-title {
   width: 100%;
+  color:  #303038;
   text-align: center;
+  font-family: "NanumSquare Neo";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  margin-bottom: 32px;
 }
 
 .modal .modal-content {
   width: 100%;
+}
 
+.modal .modal-input {
+  margin-bottom: 16px;
+}
+
+.modal .modal-input-name {
+  color: #303038;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: "NanumSquare Neo";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+
+.modal .modal-input-textstyle {
+  border-radius: 4px;
+  border: 1px solid #E6E6EA;
+  background: #FFFFFF;
+  font-family: "NanumSquare Neo";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.modal .modal-input-box {
+  width: 100%;
+  padding: 13px;
+  box-sizing: border-box;
+}
+
+.modal textarea {
+  resize: none;
+}
+
+.modal-button .guestbook-submit-text {
+  color: #929294;
+  text-align: center;
+  font-family: "NanumSquare Neo";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
 }
 
 .modal .modal-footer {
@@ -443,7 +495,7 @@ div.divider {
 }
 
 .introduce-body {
-  padding: 1rem 1.5rem;
+  padding: 0 1.5rem 1rem 1.5rem;
 }
 
 .introduce-body-wrapper {

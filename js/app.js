@@ -252,10 +252,6 @@ https://wedding.mskmc.world
       total: 0,
       currentPage: 0,
       list: [],
-    },
-    command: {
-      name: "",
-      content: "",
     }
   }
 
@@ -588,14 +584,14 @@ https://wedding.mskmc.world
     }, duration)
   }
 
-  function openModal() {
+  function openContactModal() {
     enableFadedBackground('40%')
-    showModal()
+    showContactModal()
   }
 
-  function closeModal() {
+  function closeContactModal() {
     disableFadedBackground()
-    hiddeModal()
+    hideContactModal()
   }
 
   function setupModalButtons() {
@@ -620,13 +616,13 @@ https://wedding.mskmc.world
     document.body.style.removeProperty('overflow')
   }
 
-  function showModal() {
-    const modal = document.querySelector("#modal")
+  function showContactModal() {
+    const modal = document.querySelector("#contact-modal")
     modal.style.setProperty('display', 'flex')
   }
 
-  function hiddeModal() {
-    const modal = document.querySelector("#modal")
+  function hideContactModal() {
+    const modal = document.querySelector("#contact-modal")
 
     modal.style.setProperty('display', 'none')
   }
@@ -635,8 +631,9 @@ https://wedding.mskmc.world
     const background = document.querySelector(".faded-background")
 
     background.addEventListener("click", (event) => {
-      closeModal()
+      closeContactModal()
       hideImageViewer()
+      closeGuestbookModal()
     })
   }
 
@@ -670,7 +667,7 @@ https://wedding.mskmc.world
     const button = document.querySelector("#close-modal")
 
     button.addEventListener("click", () => {
-      closeModal()
+      closeContactModal()
     })
   }
 
@@ -690,7 +687,7 @@ https://wedding.mskmc.world
     initContactButtons(foundContact)
     initContactModalButtons(modal.contacts.buttons, foundContact.phoneNumber)
 
-    openModal()
+    openContactModal()
   }
 
   function renderContactModalContent(contactElement) {
@@ -707,7 +704,7 @@ https://wedding.mskmc.world
   }
 
   function renderContactModalButtons(contactElement) {
-    const targetButton = document.querySelector(`.modal-buttons`)
+    const targetButton = document.querySelector(`#contact-modal-buttons`)
 
     targetButton.innerHTML = renderButtons(modal.contacts.buttons)
   }
@@ -846,21 +843,23 @@ https://wedding.mskmc.world
   const remoteGuestbook = {
     get: async () => {
       // call server
-      guestbookSection.query = {
-        total: 0,
-        currentPage: 0,
-        list: [],
-      }
+      guestbookSection.query = guestbookSection.query
     },
     post: async (command) => {
       // call server
-      // command.name, command.content
+      guestbookSection.query.list.push({
+        writerName: command.writerName,
+        content: command.content,
+        writtenAt: new Date(),
+      })
     }
   }
 
   async function renderGuestbook() {
     await remoteGuestbook.get()
-    
+
+    console.log(guestbookSection)
+
     const guestbookQuery = guestbookSection.query
 
     if (guestbookQuery.list.length < 1) {
@@ -881,7 +880,7 @@ https://wedding.mskmc.world
                   <img src="asset/svg/icn_black_heart.svg"/>
                 </div>
                 <div class="inner-content-header">
-                  ${ele.name}
+                  ${ele.writerName}
                 </div>
                 <div class="inner-content-body">
                   ${ele.content}
@@ -895,7 +894,7 @@ https://wedding.mskmc.world
         </div>
       </div>
       `
-      ))
+      )).join('')
   }
 
   function initGuestbookButtons() {
@@ -904,24 +903,72 @@ https://wedding.mskmc.world
     guestbookButton.addEventListener('click', () => {
       openGuestbookModal()
     })
+
+    const guestbookCloseButton = document.querySelector('#close-guestbook-modal')
+
+    guestbookCloseButton.addEventListener('click', () => {
+      closeGuestbookModal()
+    })
+
+    const guestbookSubmitButton = document.querySelector('#guestbook-submit-button')
+
+    guestbookSubmitButton.addEventListener('click', () => {
+      submitGuestbook()
+    })
   }
 
   function openGuestbookModal() {
     guestbookSection.modal.open = true
-    renderGuestbookModal(guestbookSection.modal.open)
+
+    renderGuestbookModal()
   }
 
   function closeGuestbookModal() {
     guestbookSection.modal.open = false
-    renderGuestbookModal(guestbookSection.modal.open)
+
+    renderGuestbookModal()
   }
 
-  function renderGuestbookModal(open) {
-    if (open) {
+  function renderGuestbookModal() {
+    const modal = document.querySelector('#guestbook-modal')
+
+    if (guestbookSection.modal.open) {
       enableFadedBackground('40%')
+      modal.style.setProperty('display', 'flex')
     } else {
       disableFadedBackground()
+      modal.style.setProperty('display', 'none')
     }
+  }
+
+  async function submitGuestbook() {
+    const writerName = document.querySelector('#guestbook-writer-name')
+    const content = document.querySelector('#guestbook-content')
+
+    try {
+      await remoteGuestbook.post({
+        writerName: writerName.value,
+        content: content.value,
+      })
+    } catch (e) {
+      console.error(e)
+      showSnackbar('잠시 후 다시 시도해주세요.', 2000)
+      return
+    }
+
+    initForms()
+
+    closeGuestbookModal()
+
+    renderGuestbook()
+  }
+
+  function initForms() {
+    const writerName = document.querySelector('#guestbook-writer-name')
+    const content = document.querySelector('#guestbook-content')
+
+    writerName.value = ''
+    content.value = ''
   }
 
   function activateMenuAnimation() {
