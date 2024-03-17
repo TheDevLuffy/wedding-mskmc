@@ -244,6 +244,29 @@ https://wedding.mskmc.world
     }
   }
 
+  const guestbookSection = {
+    modal: {
+      open: false,
+    },
+    query: {
+      total: 0,
+      currentPage: 0,
+      list: [],
+    },
+    command: {
+      name: "",
+      content: "",
+    }
+  }
+
+  function formatDateTime(date) {
+    var year = date.getFullYear()
+    var month = ('0' + (date.getMonth() + 1)).slice(-2)
+    var day = ('0' + date.getDate()).slice(-2)
+
+    return year + '. ' + month + '. ' + day
+  }
+
   function onClickCopyPhoneNumber(phoneNumber) {
     copyToClipboard(phoneNumber, snackbarMessage.phoneNumberSuccess)
   }
@@ -585,7 +608,7 @@ https://wedding.mskmc.world
 
     background.style.setProperty('display', 'flex')
     background.style.setProperty('opacity', opacity)
-    
+
     document.body.style.overflow = 'hidden'
   }
 
@@ -816,6 +839,91 @@ https://wedding.mskmc.world
     )).join(`<div style="height: 1px; width: 100%; background-color: #EFEFF0;"></div>`)
   }
 
+  function initGuestbook() {
+    renderGuestbook()
+  }
+
+  const remoteGuestbook = {
+    get: async () => {
+      // call server
+      guestbookSection.query = {
+        total: 0,
+        currentPage: 0,
+        list: [],
+      }
+    },
+    post: async (command) => {
+      // call server
+      // command.name, command.content
+    }
+  }
+
+  async function renderGuestbook() {
+    await remoteGuestbook.get()
+    
+    const guestbookQuery = guestbookSection.query
+
+    if (guestbookQuery.list.length < 1) {
+      return
+    }
+
+    const guestbookList = document.querySelector(".guestbook-item")
+
+    guestbookList.innerHTML = guestbookQuery.list
+      .map(ele => (
+        `
+      <div class="guestbook-item">
+        <div class="introduce-body">
+          <div class="introduce-body-wrapper">
+            <div class="inner-border">
+              <div class="inner-content">
+                <div class="inner-content-avartar">
+                  <img src="asset/svg/icn_black_heart.svg"/>
+                </div>
+                <div class="inner-content-header">
+                  ${ele.name}
+                </div>
+                <div class="inner-content-body">
+                  ${ele.content}
+                </div>
+                <div class="inner-content-footer">
+                  ${formatDateTime(ele.writtenAt)}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      `
+      ))
+  }
+
+  function initGuestbookButtons() {
+    const guestbookButton = document.querySelector('.guestbook-button')
+
+    guestbookButton.addEventListener('click', () => {
+      openGuestbookModal()
+    })
+  }
+
+  function openGuestbookModal() {
+    guestbookSection.modal.open = true
+    renderGuestbookModal(guestbookSection.modal.open)
+  }
+
+  function closeGuestbookModal() {
+    guestbookSection.modal.open = false
+    renderGuestbookModal(guestbookSection.modal.open)
+  }
+
+  function renderGuestbookModal(open) {
+    if (open) {
+      enableFadedBackground('40%')
+    } else {
+      disableFadedBackground()
+    }
+  }
+
   function activateMenuAnimation() {
     document.querySelectorAll('a[href^="#"]')
       .forEach(anchor => {
@@ -937,9 +1045,13 @@ https://wedding.mskmc.world
   initLocationButtons()
   initAccountLayout()
   initAccountButtons()
+  initGuestbook()
+  initGuestbookButtons()
+
   setupModalButtons()
   setUpContactButtons()
   activateMenuAnimation()
+
   initScreenLayout()
   initScreenInfo()
 })()

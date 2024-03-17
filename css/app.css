@@ -443,7 +443,7 @@ div.divider {
 }
 
 .introduce-body {
-  padding: 0 1.5rem;
+  padding: 1rem 1.5rem;
 }
 
 .introduce-body-wrapper {
@@ -498,6 +498,16 @@ div.divider {
   text-align: center;
   color: #303038;
   margin-bottom: 1rem;
+}
+
+.inner-content .inner-content-footer {
+  color: #303038;
+  text-align: center;
+  font-family: "NanumSquare Neo";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .section-gallary {
