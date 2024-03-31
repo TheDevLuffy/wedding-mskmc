@@ -179,6 +179,13 @@
   margin-bottom: 54px;
 }
 
+.modal .guestbook-modal-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin-bottom: 54px;
+}
+
 .modal .modal-content-profile {
   display: flex;
   flex-direction: column;
@@ -279,6 +286,10 @@
 }
 
 .modal .modal-content {
+  width: 100%;
+}
+
+.modal .guestbook-modal-content {
   width: 100%;
 }
 

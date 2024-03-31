@@ -1,4 +1,6 @@
 (() => {
+  const { createClient } = supabase
+
   let scrollY = 0;
 
   const screenInfo = {
@@ -209,7 +211,7 @@ https://wedding.mskmc.world
       {
         buttonId: 'account-button-male-mother',
         name: '이영희',
-        accountNumber: '',
+        accountNumber: '1002035162550',
         bankName: '우리'
       },
     ],
@@ -249,11 +251,11 @@ https://wedding.mskmc.world
       open: false,
     },
     query: {
-      total: 0,
-      currentPage: 0,
       list: [],
     }
   }
+
+  const _supabase = createClient('https://ylulwameexydbjvtvvrb.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlsdWx3YW1lZXh5ZGJqdnR2dnJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTE4ODM5OTcsImV4cCI6MjAyNzQ1OTk5N30.PxlbdoX7r3UdQQxBrr7MIMnnkCm4VhOX15_G74Whwxs')
 
   function formatDateTime(date) {
     var year = date.getFullYear()
@@ -838,27 +840,43 @@ https://wedding.mskmc.world
 
   function initGuestbook() {
     renderGuestbook()
+    listenFormInputs()
   }
 
-  const remoteGuestbook = {
-    get: async () => {
-      // call server
-      guestbookSection.query = guestbookSection.query
-    },
-    post: async (command) => {
-      // call server
-      guestbookSection.query.list.push({
-        writerName: command.writerName,
-        content: command.content,
-        writtenAt: new Date(),
-      })
+  async function fetchGuestbook() {
+    // call server
+    const { data, error } = await _supabase
+    .from('guestbook')
+    .select()
+    .order('id', { ascending: false })
+    .limit(10)
+
+    guestbookSection.query = {
+      list: data.map(dataElement => ({
+        writerName: dataElement.name,
+        content: dataElement.content,
+        writtenAt: new Date(dataElement.created_at)
+      }))
     }
   }
 
-  async function renderGuestbook() {
-    await remoteGuestbook.get()
+  async function postGuestbook(command) {
+    const { error } = await _supabase
+        .from('guestbook')
+        .insert({
+          name: command.writerName,
+          content: command.content,
+          created_at: new Date(),
+        })
 
-    console.log(guestbookSection)
+      if (error != null) {
+        console.log(error)
+        throw new Error('잠시 후 다시 시도해주세요.');
+      }
+  }
+
+  async function renderGuestbook() {
+    await fetchGuestbook()
 
     const guestbookQuery = guestbookSection.query
 
@@ -910,11 +928,21 @@ https://wedding.mskmc.world
       closeGuestbookModal()
     })
 
+    enableGuestBookSubmitButton()
+  }
+
+  function enableGuestBookSubmitButton() {
     const guestbookSubmitButton = document.querySelector('#guestbook-submit-button')
 
     guestbookSubmitButton.addEventListener('click', () => {
       submitGuestbook()
     })
+  }
+
+  function disableGuestBookSubmitButton() {
+    const guestbookSubmitButton = document.querySelector('#guestbook-submit-button')
+
+    guestbookSubmitButton.addEventListener('click', () => {})
   }
 
   function openGuestbookModal() {
@@ -946,21 +974,58 @@ https://wedding.mskmc.world
     const content = document.querySelector('#guestbook-content')
 
     try {
-      await remoteGuestbook.post({
+      validateForms(writerName.value, content.value)
+      await postGuestbook({
         writerName: writerName.value,
         content: content.value,
       })
+      initForms()
+      closeGuestbookModal()
+      renderGuestbook()
+      showSnackbar('방명록을 남겼어요.', 2000)
+      return
     } catch (e) {
       console.error(e)
-      showSnackbar('잠시 후 다시 시도해주세요.', 2000)
+      showSnackbar(e.message, 2000)
       return
     }
+  }
 
-    initForms()
+  function validateForms(writerName, content) {
+    if (writerName.length < 1) {
+      throw new Error('작성자를 입력하지 않고 등록할 수 없어요.')
+    } 
+    if (writerName.length > 20 || writerName.length == 0) {
+      throw new Error('작성자는 20자까지 입력할 수 있어요.')
+    }
+    if (content.length < 1) {
+      throw new Error('내용을 입력하지 않고 등록할 수 없어요.')
+    }
+    if (content.length > 500 || content.length == 0) {
+      throw new Error('내용은 500자까지 입력할 수 있어요.')
+    }
+  }
 
-    closeGuestbookModal()
+  function listenFormInputs() {
+    const writerName = document.querySelector('#guestbook-writer-name')
+    const content = document.querySelector('#guestbook-content')
 
-    renderGuestbook()
+    writerName.addEventListener("input", (event) => {
+      // if (content.value.length > 1 && content.value.length < 501 && writerName.value.length > 1 &&  writerName.value.length < 21) {
+      //   enableGuestBookSubmitButton()
+      // } else {
+      //   disableGuestBookSubmitButton()
+      // }
+    })
+
+    content.addEventListener("input", (event) => {
+      // if (content.value.length > 1 && content.value.length < 501 && writerName.value.length > 1 &&  writerName.value.length < 21) {
+      //   console.log('input - content')
+      //   enableGuestBookSubmitButton()
+      // } else {
+      //   disableGuestBookSubmitButton()
+      // }
+    })
   }
 
   function initForms() {
