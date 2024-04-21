@@ -225,14 +225,14 @@ https://wedding.mskmc.world
       {
         buttonId: 'account-button-female-father',
         name: '민병용',
-        accountNumber: '',
-        bankName: '우리'
+        accountNumber: '42102352029295',
+        bankName: '농협'
       },
       {
         buttonId: 'account-button-female-mother',
         name: '문예덕',
-        accountNumber: '',
-        bankName: '우리'
+        accountNumber: '42102351044870',
+        bankName: '농협'
       },
     ]
   }
@@ -712,11 +712,11 @@ https://wedding.mskmc.world
   }
 
   function renderContact(contactElement) {
+    // <div class="modal-profile-avatar">
+    //   ${contactElement.profileImageUrl}
+    // </div>
     return `
       <div class="modal-content-profile">
-        <div class="modal-profile-avatar">
-          ${contactElement.profileImageUrl}
-        </div>
         <div class="modal-margin-column"></div>
         <div class="modal-profile-name">
           <div class="title-text">

@@ -200,13 +200,13 @@
   margin: 4px;
 }
 
-.modal .modal-content-profile .modal-profile-avatar {
+/* .modal .modal-content-profile .modal-profile-avatar {
   border: 1px solid #0000000F;
   border-radius: 50%;
   background-color: gray;
   height: 56px;
   width: 56px;
-}
+} */
 
 .modal .modal-content-profile .modal-profile-name {
   display: flex;
@@ -297,6 +297,10 @@
   margin-bottom: 16px;
 }
 
+.modal .guestbook-modal-input {
+  margin-bottom: 16px;
+}
+
 .modal .modal-input-name {
   color: #303038;
   font-feature-settings: 'clig' off, 'liga' off;
@@ -362,6 +366,26 @@
 }
 
 .modal .modal-button .modal-button-text {
+  width: fit-content;
+  height: fit-content;
+}
+
+.modal .guestbook-modal-buttons {
+  display: flex;
+  height: 54px;
+  border-top: 1px solid #EFEFF0;
+}
+
+.modal .guestbook-modal-button {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal .guestbook-modal-button .modal-button-text {
   width: fit-content;
   height: fit-content;
 }
@@ -937,13 +961,13 @@ div.divider {
   cursor: pointer;
 }
 
-.contact-list .contact-avatar {
+/* .contact-list .contact-avatar {
   background: gray;
   border-radius: 50%;
   width: 30px;
   height: 30px;
   margin-right: 10px;
-}
+} */
 
 .contact-list .contact-title {
   width: 64px;
