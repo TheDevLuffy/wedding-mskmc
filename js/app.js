@@ -91,9 +91,18 @@ https://wedding.mskmc.world
     {
       src: "asset/gallary/JH_03268 copy.jpeg"
     },
+    { src: "asset/gallary/JH_03102.jpg" },
     {
       src: "asset/gallary/JH_03496 copy.jpeg"
     },
+    { src: "asset/gallary/JH_03060.jpg" },
+    { src: "asset/gallary/JH_04264.jpg" },
+    { src: "asset/gallary/JH_03378.jpg" },
+    { src: "asset/gallary/JH_03260.jpg" },
+    { src: "asset/gallary/JH_03703.jpg" },
+    { src: "asset/gallary/JH_03788.jpg" },
+    { src: "asset/gallary/JH_03946.jpg" },
+    { src: "asset/gallary/JH_04075.jpg" },
   ]
 
   const linkData = {
@@ -846,10 +855,10 @@ https://wedding.mskmc.world
   async function fetchGuestbook() {
     // call server
     const { data, error } = await _supabase
-    .from('guestbook')
-    .select()
-    .order('id', { ascending: false })
-    .limit(10)
+      .from('guestbook')
+      .select()
+      .order('id', { ascending: false })
+      .limit(10)
 
     guestbookSection.query = {
       list: data.map(dataElement => ({
@@ -862,17 +871,17 @@ https://wedding.mskmc.world
 
   async function postGuestbook(command) {
     const { error } = await _supabase
-        .from('guestbook')
-        .insert({
-          name: command.writerName,
-          content: command.content,
-          created_at: new Date(),
-        })
+      .from('guestbook')
+      .insert({
+        name: command.writerName,
+        content: command.content,
+        created_at: new Date(),
+      })
 
-      if (error != null) {
-        console.log(error)
-        throw new Error('잠시 후 다시 시도해주세요.');
-      }
+    if (error != null) {
+      console.log(error)
+      throw new Error('잠시 후 다시 시도해주세요.');
+    }
   }
 
   async function renderGuestbook() {
@@ -942,7 +951,7 @@ https://wedding.mskmc.world
   function disableGuestBookSubmitButton() {
     const guestbookSubmitButton = document.querySelector('#guestbook-submit-button')
 
-    guestbookSubmitButton.addEventListener('click', () => {})
+    guestbookSubmitButton.addEventListener('click', () => { })
   }
 
   function openGuestbookModal() {
@@ -994,7 +1003,7 @@ https://wedding.mskmc.world
   function validateForms(writerName, content) {
     if (writerName.length < 1) {
       throw new Error('작성자를 입력하지 않고 등록할 수 없어요.')
-    } 
+    }
     if (writerName.length > 20 || writerName.length == 0) {
       throw new Error('작성자는 20자까지 입력할 수 있어요.')
     }
