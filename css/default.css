@@ -1,36 +1,39 @@
 @charset 'utf-8';
 
 @font-face {
-	font-family: "NanumSquare Neo";
-	src: url("/font/NanumSquareAcB.woff2") format("woff2");
+  font-family: "NanumSquare Neo";
+  font-weight: 300;
+  src: url(/font/eot/NanumSquareNeoTTF-aLt.eot);
+  src: url(/font/woff/NanumSquareNeoTTF-aLt.woff) format("woff"),
+    url(/font/woff2/NanumSquareNeoTTF-aLt.woff2) format("woff2"),
+    url(/font/ttf/NanumSquareNeoTTF-aLt.ttf) format("truetype");
 }
+
 @font-face {
-	font-family: "NanumSquare Neo";
-	src: url("/font/NanumSquareAcEB.woff2") format("woff2");
+  font-family: "NanumSquare Neo";
+  font-weight: 500;
+  src: url(/font/eot/NanumSquareNeoTTF-bRg.eot);
+  src: url(/font/woff/NanumSquareNeoTTF-bRg.woff) format("woff"),
+    url(/font/woff2/NanumSquareNeoTTF-bRg.woff2) format("woff2"),
+    url(/font/ttf/NanumSquareNeoTTF-bRg.ttf) format("truetype");
 }
+
 @font-face {
-	font-family: "NanumSquare Neo";
-	src: url("/font/NanumSquareAcL.woff2") format("woff2");
+  font-family: "NanumSquare Neo";
+  font-weight: 700;
+  src: url(/font/eot/NanumSquareNeoTTF-cBd.eot);
+  src: url(/font/woff/NanumSquareNeoTTF-cBd.woff) format("woff"),
+    url(/font/woff2/NanumSquareNeoTTF-cBd.woff2) format("woff2"),
+    url(/font/ttf/NanumSquareNeoTTF-cBd.ttf) format("truetype");
 }
+
 @font-face {
-	font-family: "NanumSquare Neo";
-	src: url("/font/NanumSquareAcR.woff2") format("woff2");
-}
-@font-face {
-	font-family: "NanumSquare Neo";
-	src: url("/font/NanumSquareB.woff2") format("woff2");
-}
-@font-face {
-	font-family: "NanumSquare Neo";
-	src: url("/font/NanumSquareEB.woff2") format("woff2");
-}
-@font-face {
-	font-family: "NanumSquare Neo";
-	src: url("/font/NanumSquareL.woff2") format("woff2");
-}
-@font-face {
-	font-family: "NanumSquare Neo";
-	src: url("/font/NanumSquareR.woff2") format("woff2");
+  font-family: "NanumSquare Neo";
+  font-weight: 800;
+  src: url(/font/eot/NanumSquareNeoTTF-dEb.eot);
+  src: url(/font/woff/NanumSquareNeoTTF-dEb.woff) format("woff"),
+    url(/font/woff2/NanumSquareNeoTTF-dEb.woff2) format("woff2"),
+    url(/font/ttf/NanumSquareNeoTTF-dEb.ttf) format("truetype");
 }
 
 html {
