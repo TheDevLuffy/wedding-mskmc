@@ -607,6 +607,7 @@ https://wedding.mskmc.world
 
   function setupModalButtons() {
     initCloseModalButton()
+    initImageViewerCloseButton()
     initFadedBackgroundClick()
   }
 
@@ -666,13 +667,14 @@ https://wedding.mskmc.world
     showImageViewer()
   }
 
-  // function renderImageView() {
-  //   const imageViewImage = document.querySelector("#image-viewer-image")
-  //   const imageViewerIndex = document.querySelector("#image-viewer-index")
+  function initImageViewerCloseButton() {
+    const imageViewerCloseButton = document.querySelector('#close-gallary-modal')
 
-  //   imageViewImage.src = imageViewer.currentImage.src
-  //   imageViewerIndex.innerText = `${imageViewer.currentIndex + 1} / ${gallaryImages.length}`
-  // }
+    imageViewerCloseButton.addEventListener("click", () => {
+      hideImageViewer()
+      disableFadedBackground()
+    })
+  }
 
   function initCloseModalButton() {
     const button = document.querySelector("#close-modal")
