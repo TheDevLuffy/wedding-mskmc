@@ -6,9 +6,9 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNCMHFR4CC"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-  
+
     gtag('config', 'G-GNCMHFR4CC');
   </script>
 
@@ -85,13 +85,15 @@
             <div class="modal-input-name">
               작성자
             </div>
-            <input id="guestbook-writer-name" class="modal-input-textstyle modal-input-box" type="text" placeholder="이름을 작성해주세요." maxlength="20"></input>
+            <input id="guestbook-writer-name" class="modal-input-textstyle modal-input-box" type="text"
+              placeholder="이름을 작성해주세요." maxlength="20"></input>
           </div>
           <div class="guestbook-modal-input">
             <div class="modal-input-name">
               내용
             </div>
-            <textarea id="guestbook-content" class="modal-input-textstyle modal-input-box" rows="10" placeholder="하고싶은 말을 남겨주세요."></textarea>
+            <textarea id="guestbook-content" class="modal-input-textstyle modal-input-box" rows="10"
+              placeholder="하고싶은 말을 남겨주세요."></textarea>
           </div>
         </div>
       </div>
@@ -238,351 +240,351 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="section-location section width-restriction" id="location">
-    <div class="section-title">
-      <div class="section-title-icon">
-        <embed src="asset/svg/icn_star.svg">
+    <div class="section-location section width-restriction" id="location">
+      <div class="section-title">
+        <div class="section-title-icon">
+          <embed src="asset/svg/icn_star.svg">
+        </div>
+        <div class="section-title-text">
+          위치 안내
+        </div>
+        <div class="section-title-icon">
+          <embed src="asset/svg/icn_star.svg">
+        </div>
       </div>
-      <div class="section-title-text">
-        위치 안내
+      <div class="location-content">
+        <div class="location-content-title">
+          &lt;그랜드힐 컨벤션&gt;
+        </div>
+        <div class="location-content-description">
+          서울시 강남구 역삼로 604 <a class="copy" href="">복사</a><br>
+          02-6964-7889 <a href="tel:02-6964-7889">전화</a><br>
+        </div>
       </div>
-      <div class="section-title-icon">
-        <embed src="asset/svg/icn_star.svg">
+      <div class="location-map">
+        <div class="location-map-view">
+          <div id="kakao-map" style="width:335;height:200px;"></div>
+        </div>
+        <div class="location-map-buttons">
+          <div class="map-buttons-row">
+            <div class="map-icon-button" id="location-button-naver">
+              <div class="button-icon">
+                <img src="asset/img_navermap.png">
+              </div>
+              <div class="button-text">
+                네이버 지도
+              </div>
+            </div>
+            <div class="map-icon-button" id="location-button-kakao">
+              <div class="button-icon">
+                <img src="asset/img_kakaomap.png">
+              </div>
+              <div class="button-text">
+                카카오 지도
+              </div>
+            </div>
+          </div>
+          <div class="map-buttons-row">
+            <div class="map-icon-button" id="location-button-kakaonavi">
+              <div class="button-icon">
+                <img src="asset/img_kakaonavi.png">
+              </div>
+              <div class="button-text">
+                카카오 내비
+              </div>
+            </div>
+            <div class="map-icon-button" id="location-button-tmap">
+              <div class="button-icon">
+                <img src="asset/img_tmap.png">
+              </div>
+              <div class="button-text">
+                티맵
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-title">
+        <div class="section-title-icon">
+          <embed src="asset/svg/icn_star.svg">
+        </div>
+        <div class="section-title-text">
+          오시는 길
+        </div>
+        <div class="section-title-icon">
+          <embed src="asset/svg/icn_star.svg">
+        </div>
+      </div>
+      <div class="card-layout">
+        <div class="card-icon-box">
+          <div class="card-icon">
+            <embed src="asset/svg/icon_subway.svg">
+          </div>
+        </div>
+        <div class="card-inner-box">
+          <div class="card-title">
+            <div>지하철</div>
+          </div>
+          <div class="card-content">
+            <div>지하철 2호선 삼성역 1번출구</div>
+            <div>셔틀버스 항시 대기 (1번출구)</div>
+            <div>도보(5분 정도 소요)</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-layout">
+        <div class="card-icon-box">
+          <div class="card-icon">
+            <embed src="asset/svg/icon_bus.svg">
+          </div>
+        </div>
+        <div class="card-inner-box">
+          <div class="card-title">
+            <div>버스</div>
+          </div>
+          <div class="card-content">
+            <div class="bus-chip-layout">
+              <div class="bus-chip-blue bus-chip">
+                <div class="bus-chip-text">간선버스</div>
+              </div>
+              <div>143, 146, 341, 360, 363, 401</div>
+            </div>
+
+            <div class="bus-chip-layout">
+              <div class="bus-chip-green bus-chip">
+                <div class="bus-chip-text">지선버스</div>
+              </div>
+              <div>2413, 3411, 3422, 4318, 4419, 917, 11-3</div>
+            </div>
+
+            <div class="bus-chip-layout">
+              <div class="bus-chip-red bus-chip">
+                <div class="bus-chip-text">광역버스</div>
+              </div>
+              <div>9407, 6900</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="location-content">
-      <div class="location-content-title">
-        &lt;그랜드힐 컨벤션&gt;
+    <div class="section-contact section width-restriction" id="contact">
+      <div class="section-title">
+        <div class="section-title-icon">
+          <embed src="asset/svg/icn_star.svg">
+        </div>
+        <div class="section-title-text">
+          연락처
+        </div>
+        <div class="section-title-icon">
+          <embed src="asset/svg/icn_star.svg">
+        </div>
       </div>
-      <div class="location-content-description">
-        서울시 강남구 역삼로 604 <a class="copy" href="">복사</a><br>
-        02-6964-7889 <a href="tel:02-6964-7889">전화</a><br>
+      <div class="card-layout card-contact card-blue">
+        <div class="title blue">
+          신랑측
+        </div>
+        <div class="contact-list">
+          <div class="contact-item" id="contact-button-male">
+            <div class="contact-avatar">
+
+            </div>
+            <div class="contact-title">
+              신랑
+            </div>
+            <div class="contact-name">
+              권민철
+            </div>
+            <div class="contact-button">
+              <div class="icon">></div>
+            </div>
+          </div>
+          <div class="contact-item" id="contact-button-male-father">
+            <div class="contact-avatar">
+
+            </div>
+            <div class="contact-title">
+              아버지
+            </div>
+            <div class="contact-name">
+              권영준
+            </div>
+            <div class="contact-button">
+              <div class="icon">></div>
+            </div>
+          </div>
+          <div class="contact-item" id="contact-button-male-mother">
+            <div class="contact-avatar">
+
+            </div>
+            <div class="contact-title">
+              어머니
+            </div>
+            <div class="contact-name">
+              이영희
+            </div>
+            <div class="contact-button">
+              <div class="icon">></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-layout card-contact card-red">
+        <div class="title red">
+          신부측
+        </div>
+        <div class="contact-list">
+          <div class="contact-item" id="contact-button-female">
+            <div class="contact-avatar">
+
+            </div>
+            <div class="contact-title">
+              신부
+            </div>
+            <div class="contact-name">
+              민슬기
+            </div>
+            <div class="contact-button">
+              <div class="icon">></div>
+            </div>
+          </div>
+          <div class="contact-item" id="contact-button-female-father">
+            <div class="contact-avatar">
+
+            </div>
+            <div class="contact-title">
+              아버지
+            </div>
+            <div class="contact-name">
+              민병용
+            </div>
+            <div class="contact-button">
+              <div class="icon">></div>
+            </div>
+          </div>
+          <div class="contact-item" id="contact-button-female-mother">
+            <div class="contact-avatar">
+
+            </div>
+            <div class="contact-title">
+              어머니
+            </div>
+            <div class="contact-name">
+              문예덕
+            </div>
+            <div class="contact-button">
+              <div class="icon">></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="location-map">
-      <div class="location-map-view">
-        <div id="kakao-map" style="width:335;height:200px;"></div>
+    <div class="section-account section width-restriction">
+      <div class="section-title">
+        <div class="section-title-icon">
+          <embed src="asset/svg/icn_star.svg">
+        </div>
+        <div class="section-title-text">
+          마음 전하실 곳
+        </div>
+        <div class="section-title-icon">
+          <embed src="asset/svg/icn_star.svg">
+        </div>
       </div>
-      <div class="location-map-buttons">
-        <div class="map-buttons-row">
-          <div class="map-icon-button" id="location-button-naver">
+      <div class="drop-downs">
+        <div class="drop-down">
+          <div class="drop-down-title" id="male-account-button">
+            <div class="button-text blue-text">
+              <div>
+                신랑측 계좌번호
+              </div>
+              <div class="down-button" id="male-account-button-arrow">
+                <img src="asset/svg/icn_down_blue.svg">
+              </div>
+            </div>
+          </div>
+          <div style="height: 1px; width: 100%; background-color: #EFEFF0;"></div>
+          <div class="drop-down-list" id="male-accounts">
+          </div>
+        </div>
+        <div class="drop-down">
+          <div class="drop-down-title" id="female-account-button">
+            <div class="button-text red-text">
+              <div>
+                신부측 계좌번호
+              </div>
+              <div class="down-button" id="female-account-button-arrow">
+                <img src="asset/svg/icn_down_pink.svg">
+              </div>
+            </div>
+          </div>
+          <div style="height: 1px; width: 100%; background-color: #EFEFF0;"></div>
+          <div class="drop-down-list" id="female-accounts">
+          </div>
+        </div>
+      </div>
+      <div class="section-title section-title-margin">
+        <div class="section-title-icon">
+          <embed src="asset/svg/icn_star.svg">
+        </div>
+        <div class="section-title-text">
+          공유하기
+        </div>
+        <div class="section-title-icon">
+          <embed src="asset/svg/icn_star.svg">
+        </div>
+      </div>
+      <div class="share-buttons">
+        <div class="share-buttons-row">
+          <div class="share-icon-button" id="share-button-kakao">
             <div class="button-icon">
-              <img src="asset/img_navermap.png">
+              <img src="asset/img_kakao.png">
             </div>
             <div class="button-text">
-              네이버 지도
+              카카오톡
             </div>
           </div>
-          <div class="map-icon-button" id="location-button-kakao">
+          <div class="share-icon-button" id="share-button">
             <div class="button-icon">
-              <img src="asset/img_kakaomap.png">
+              <img src="asset/img_link.png">
             </div>
             <div class="button-text">
-              카카오 지도
-            </div>
-          </div>
-        </div>
-        <div class="map-buttons-row">
-          <div class="map-icon-button" id="location-button-kakaonavi">
-            <div class="button-icon">
-              <img src="asset/img_kakaonavi.png">
-            </div>
-            <div class="button-text">
-              카카오 내비
-            </div>
-          </div>
-          <div class="map-icon-button" id="location-button-tmap">
-            <div class="button-icon">
-              <img src="asset/img_tmap.png">
-            </div>
-            <div class="button-text">
-              티맵
+              공유하기
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="section-title">
-      <div class="section-title-icon">
-        <embed src="asset/svg/icn_star.svg">
-      </div>
-      <div class="section-title-text">
-        오시는 길
-      </div>
-      <div class="section-title-icon">
-        <embed src="asset/svg/icn_star.svg">
-      </div>
-    </div>
-    <div class="card-layout">
-      <div class="card-icon-box">
-        <div class="card-icon">
-          <embed src="asset/svg/icon_subway.svg">
-        </div>
-      </div>
-      <div class="card-inner-box">
-        <div class="card-title">
-          <div>지하철</div>
-        </div>
-        <div class="card-content">
-          <div>지하철 2호선 삼성역 1번출구</div>
-          <div>셔틀버스 항시 대기 (1번출구)</div>
-          <div>도보(5분 정도 소요)</div>
-        </div>
-      </div>
-    </div>
-    <div class="card-layout">
-      <div class="card-icon-box">
-        <div class="card-icon">
-          <embed src="asset/svg/icon_bus.svg">
-        </div>
-      </div>
-      <div class="card-inner-box">
-        <div class="card-title">
-          <div>버스</div>
-        </div>
-        <div class="card-content">
-          <div class="bus-chip-layout">
-            <div class="bus-chip-blue bus-chip">
-              <div class="bus-chip-text">간선버스</div>
-            </div>
-            <div>143, 146, 341, 360, 363, 401</div>
-          </div>
 
-          <div class="bus-chip-layout">
-            <div class="bus-chip-green bus-chip">
-              <div class="bus-chip-text">지선버스</div>
-            </div>
-            <div>2413, 3411, 3422, 4318, 4419, 917, 11-3</div>
-          </div>
-
-          <div class="bus-chip-layout">
-            <div class="bus-chip-red bus-chip">
-              <div class="bus-chip-text">광역버스</div>
-            </div>
-            <div>9407, 6900</div>
-          </div>
+    <div class="section-guestbook section width-restriction" id="guestbook">
+      <div class="section-title">
+        <div class="section-title-text white-title">
+          방명록
         </div>
       </div>
-    </div>
-  </div>
-  <div class="section-contact section width-restriction" id="contact">
-    <div class="section-title">
-      <div class="section-title-icon">
-        <embed src="asset/svg/icn_star.svg">
-      </div>
-      <div class="section-title-text">
-        연락처
-      </div>
-      <div class="section-title-icon">
-        <embed src="asset/svg/icn_star.svg">
-      </div>
-    </div>
-    <div class="card-layout card-contact card-blue">
-      <div class="title blue">
-        신랑측
-      </div>
-      <div class="contact-list">
-        <div class="contact-item" id="contact-button-male">
-          <div class="contact-avatar">
-
-          </div>
-          <div class="contact-title">
-            신랑
-          </div>
-          <div class="contact-name">
-            권민철
-          </div>
-          <div class="contact-button">
-            <div class="icon">></div>
-          </div>
+      <div class="guestbook-button">
+        <div class="guestbook-button-icon">
+          <embed src="asset/svg/icn_write.svg">
         </div>
-        <div class="contact-item" id="contact-button-male-father">
-          <div class="contact-avatar">
-
-          </div>
-          <div class="contact-title">
-            아버지
-          </div>
-          <div class="contact-name">
-            권영준
-          </div>
-          <div class="contact-button">
-            <div class="icon">></div>
-          </div>
-        </div>
-        <div class="contact-item" id="contact-button-male-mother">
-          <div class="contact-avatar">
-
-          </div>
-          <div class="contact-title">
-            어머니
-          </div>
-          <div class="contact-name">
-            이영희
-          </div>
-          <div class="contact-button">
-            <div class="icon">></div>
-          </div>
+        <div class="guestbook-button-text">
+          방명록 남기기
         </div>
       </div>
-    </div>
-    <div class="card-layout card-contact card-red">
-      <div class="title red">
-        신부측
-      </div>
-      <div class="contact-list">
-        <div class="contact-item" id="contact-button-female">
-          <div class="contact-avatar">
-
-          </div>
-          <div class="contact-title">
-            신부
-          </div>
-          <div class="contact-name">
-            민슬기
-          </div>
-          <div class="contact-button">
-            <div class="icon">></div>
-          </div>
-        </div>
-        <div class="contact-item" id="contact-button-female-father">
-          <div class="contact-avatar">
-
-          </div>
-          <div class="contact-title">
-            아버지
-          </div>
-          <div class="contact-name">
-            민병용
-          </div>
-          <div class="contact-button">
-            <div class="icon">></div>
-          </div>
-        </div>
-        <div class="contact-item" id="contact-button-female-mother">
-          <div class="contact-avatar">
-
-          </div>
-          <div class="contact-title">
-            어머니
-          </div>
-          <div class="contact-name">
-            문예덕
-          </div>
-          <div class="contact-button">
-            <div class="icon">></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="section-account section width-restriction">
-    <div class="section-title">
-      <div class="section-title-icon">
-        <embed src="asset/svg/icn_star.svg">
-      </div>
-      <div class="section-title-text">
-        마음 전하실 곳
-      </div>
-      <div class="section-title-icon">
-        <embed src="asset/svg/icn_star.svg">
-      </div>
-    </div>
-    <div class="drop-downs">
-      <div class="drop-down">
-        <div class="drop-down-title" id="male-account-button">
-          <div class="button-text blue-text">
-            <div>
-              신랑측 계좌번호
-            </div>
-            <div class="down-button" id="male-account-button-arrow">
-              <img src="asset/svg/icn_down_blue.svg">
-            </div>
-          </div>
-        </div>
-        <div style="height: 1px; width: 100%; background-color: #EFEFF0;"></div>
-        <div class="drop-down-list" id="male-accounts">
-        </div>
-      </div>
-      <div class="drop-down">
-        <div class="drop-down-title" id="female-account-button">
-          <div class="button-text red-text">
-            <div>
-              신부측 계좌번호
-            </div>
-            <div class="down-button" id="female-account-button-arrow">
-              <img src="asset/svg/icn_down_pink.svg">
-            </div>
-          </div>
-        </div>
-        <div style="height: 1px; width: 100%; background-color: #EFEFF0;"></div>
-        <div class="drop-down-list" id="female-accounts">
-        </div>
-      </div>
-    </div>
-    <div class="section-title section-title-margin">
-      <div class="section-title-icon">
-        <embed src="asset/svg/icn_star.svg">
-      </div>
-      <div class="section-title-text">
-        공유하기
-      </div>
-      <div class="section-title-icon">
-        <embed src="asset/svg/icn_star.svg">
-      </div>
-    </div>
-    <div class="share-buttons">
-      <div class="share-buttons-row">
-        <div class="share-icon-button" id="share-button-kakao">
-          <div class="button-icon">
-            <img src="asset/img_kakao.png">
-          </div>
-          <div class="button-text">
-            카카오톡
-          </div>
-        </div>
-        <div class="share-icon-button" id="share-button">
-          <div class="button-icon">
-            <img src="asset/img_link.png">
-          </div>
-          <div class="button-text">
-            공유하기
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-guestbook section width-restriction" id="guestbook">
-    <div class="section-title">
-      <div class="section-title-text white-title">
-        방명록
-      </div>
-    </div>
-    <div class="guestbook-button">
-      <div class="guestbook-button-icon">
-        <embed src="asset/svg/icn_write.svg">
-      </div>
-      <div class="guestbook-button-text">
-        방명록 남기기
-      </div>
-    </div>
-    <div class="guestbook-list">
-      <div class="guestbook-item">
-        <div class="introduce-body">
-          <div class="introduce-body-wrapper">
-            <div class="inner-border">
-              <div class="inner-content">
-                <div class="inner-content-avartar">
-                  <img src="asset/svg/icn_black_heart.svg"/>
+      <div class="guestbook-list">
+        <div class="guestbook-item">
+          <div class="introduce-body">
+            <div class="introduce-body-wrapper">
+              <div class="inner-border">
+                <div class="inner-content">
+                  <div class="inner-content-avartar">
+                    <img src="asset/svg/icn_black_heart.svg" />
+                  </div>
+                  <div class="inner-content-header"></div>
+                  <div class="inner-content-body">
+                    아직 방명록이 없어요.<br>
+                    첫번째로 축하 메시지를 남겨보세요.
+                  </div>
+                  <div class="inner-content-footer"></div>
                 </div>
-                <div class="inner-content-header"></div>
-                <div class="inner-content-body">
-                  아직 방명록이 없어요.<br>
-                  첫번째로 축하 메시지를 남겨보세요.
-                </div>
-                <div class="inner-content-footer"></div>
               </div>
             </div>
           </div>

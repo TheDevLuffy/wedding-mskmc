@@ -1153,6 +1153,9 @@ https://wedding.mskmc.world
     })
 
     loading.style.opacity = 1;
+
+    initScreenLayout()
+    initScreenInfo()
   })
 
   window.addEventListener('load', () => {
