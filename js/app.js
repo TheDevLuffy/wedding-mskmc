@@ -314,6 +314,7 @@ https://wedding.mskmc.world
 
   function initShareButtons() {
     initShareButton()
+    initCalendarButton()
     initShareButtonKakao()
   }
 
@@ -336,6 +337,14 @@ https://wedding.mskmc.world
           showSnackbar('복사에 실패했습니다.', 3000)
         }
       }
+    })
+  }
+
+  function initCalendarButton() {
+    const shareButton = document.querySelector("#calendar-button");
+
+    shareButton.addEventListener("click", async () => {
+      open('../asset/calendar.ics')
     })
   }
 
@@ -370,6 +379,13 @@ https://wedding.mskmc.world
                 webUrl: 'https://wedding.mskmc.world',
               },
             },
+            {
+              title: '캘린더 추가하기',
+              links: {
+                mobileWebUrl: 'https://wedding.mskmc.world/asset/calendar.ics',
+                webUrl: 'https://wedding.mskmc.world/asset/calendar.ics',
+              }
+            }
           ],
         })
       } else {
