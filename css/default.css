@@ -1,5 +1,37 @@
 @charset 'utf-8';
 
+@font-face {
+	font-family: "NanumSquare Neo";
+	src: url("/font/NanumSquareAcB.woff2") format("woff2");
+}
+@font-face {
+	font-family: "NanumSquare Neo";
+	src: url("/font/NanumSquareAcEB.woff2") format("woff2");
+}
+@font-face {
+	font-family: "NanumSquare Neo";
+	src: url("/font/NanumSquareAcL.woff2") format("woff2");
+}
+@font-face {
+	font-family: "NanumSquare Neo";
+	src: url("/font/NanumSquareAcR.woff2") format("woff2");
+}
+@font-face {
+	font-family: "NanumSquare Neo";
+	src: url("/font/NanumSquareB.woff2") format("woff2");
+}
+@font-face {
+	font-family: "NanumSquare Neo";
+	src: url("/font/NanumSquareEB.woff2") format("woff2");
+}
+@font-face {
+	font-family: "NanumSquare Neo";
+	src: url("/font/NanumSquareL.woff2") format("woff2");
+}
+@font-face {
+	font-family: "NanumSquare Neo";
+	src: url("/font/NanumSquareR.woff2") format("woff2");
+}
 
 html {
 	font-family: 'NanumSquare Neo', Roboto, 'Noto Sans KR', NanumGothic, 'Malgun Gothic', sans-serif; /* 임시 폰트 */

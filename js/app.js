@@ -907,10 +907,10 @@ https://wedding.mskmc.world
                   <img src="asset/svg/icn_black_heart.svg"/>
                 </div>
                 <div class="inner-content-header">
-                  ${ele.writerName}
+                  ${replaceXssChars(ele.writerName)}
                 </div>
                 <div class="inner-content-body">
-                  ${ele.content}
+                  ${replaceXssChars(ele.content)}
                 </div>
                 <div class="inner-content-footer">
                   ${formatDateTime(ele.writtenAt)}
@@ -922,6 +922,15 @@ https://wedding.mskmc.world
       </div>
       `
       )).join('')
+  }
+
+  function replaceXssChars(value) {
+    return value
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll("\\(", "&#40;")
+    .replaceAll("\\)", "&#41;")
+    .replaceAll("'", "&#x27;")
   }
 
   function initGuestbookButtons() {
